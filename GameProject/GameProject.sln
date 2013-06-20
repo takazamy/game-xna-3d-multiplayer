@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameProject", "GameProject\GameProject\GameProject.csproj", "{D1FF42C3-A6EC-4A67-84EA-DB054BB5425A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameProjectContent", "GameProject\GameProjectContent\GameProjectContent.contentproj", "{0E077D48-3B59-467A-BE33-B739935A543D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XnaGameCore", "..\XnaGameCore\XnaGameCore\XnaGameCore\XnaGameCore.csproj", "{03787A2A-8E3B-416B-BF38-BCBB78410384}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XnaGameNetworkEngine", "..\NetworkEngine\XnaGameNetworkEngine\XnaGameNetworkEngine\XnaGameNetworkEngine.csproj", "{2E78BA8C-E1BB-4C50-A029-1DA2A6121E9A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1FF42C3-A6EC-4A67-84EA-DB054BB5425A}.Debug|x86.ActiveCfg = Debug|x86
+		{D1FF42C3-A6EC-4A67-84EA-DB054BB5425A}.Debug|x86.Build.0 = Debug|x86
+		{D1FF42C3-A6EC-4A67-84EA-DB054BB5425A}.Release|x86.ActiveCfg = Release|x86
+		{D1FF42C3-A6EC-4A67-84EA-DB054BB5425A}.Release|x86.Build.0 = Release|x86
+		{0E077D48-3B59-467A-BE33-B739935A543D}.Debug|x86.ActiveCfg = Debug|x86
+		{0E077D48-3B59-467A-BE33-B739935A543D}.Release|x86.ActiveCfg = Release|x86
+		{03787A2A-8E3B-416B-BF38-BCBB78410384}.Debug|x86.ActiveCfg = Debug|x86
+		{03787A2A-8E3B-416B-BF38-BCBB78410384}.Debug|x86.Build.0 = Debug|x86
+		{03787A2A-8E3B-416B-BF38-BCBB78410384}.Release|x86.ActiveCfg = Release|x86
+		{03787A2A-8E3B-416B-BF38-BCBB78410384}.Release|x86.Build.0 = Release|x86
+		{2E78BA8C-E1BB-4C50-A029-1DA2A6121E9A}.Debug|x86.ActiveCfg = Debug|x86
+		{2E78BA8C-E1BB-4C50-A029-1DA2A6121E9A}.Debug|x86.Build.0 = Debug|x86
+		{2E78BA8C-E1BB-4C50-A029-1DA2A6121E9A}.Release|x86.ActiveCfg = Release|x86
+		{2E78BA8C-E1BB-4C50-A029-1DA2A6121E9A}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
