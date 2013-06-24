@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Media;
 using XnaGameCore.GameLogic.Screens;
 using XnaGameCore.GameLogic.State;
 using XnaGameCore;
+using GameProject.Core;
 namespace GameProject
 {
     /// <summary>
@@ -20,7 +21,7 @@ namespace GameProject
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        ScreenManager scrManager;
+        ScreenGameManager scrManager;
         public MouseComponent mouse;
         public Game1()
         {
@@ -37,8 +38,11 @@ namespace GameProject
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-           
-            
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 600;
+            graphics.IsFullScreen = false;
+            graphics.ApplyChanges();
+            Window.Title = "BeachHead 3D Multiplayer";
             base.Initialize();
         }
 
@@ -50,10 +54,8 @@ namespace GameProject
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            scrManager = new ScreenManager(this, this.spriteBatch);
-            Texture2D splashImage = new Texture2D(this.GraphicsDevice,800,600);
-            splashImage =this.Content.Load<Texture2D>("1");
-            scrManager.Append(States.ScreenState.GS_SPLASH_SCREEN,new SplashScreen(scrManager,this,this.spriteBatch,splashImage));
+            scrManager = new ScreenGameManager(this, this.spriteBatch);        
+           
             scrManager.PlayScreen(States.ScreenState.GS_SPLASH_SCREEN);
 
             mouse = new MouseComponent(this, "mouse");
