@@ -21,11 +21,10 @@ namespace XnaGameCore.GameLogic.Screens
     {
 
 
-        public SplashScreen(ScreenManager scrManager, Game game, SpriteBatch spriteBatch,Texture2D backGround)
+        public SplashScreen(ScreenManager scrManager, Game game, SpriteBatch spriteBatch)
             : base(scrManager, game, spriteBatch)
         {
-            this.state = States.ScreenState.GS_SPLASH_SCREEN;
-            this.backGround = backGround;
+            this.state = States.ScreenState.GS_SPLASH_SCREEN;           
             // TODO: Construct any child components here
         }
 
@@ -54,22 +53,22 @@ namespace XnaGameCore.GameLogic.Screens
             MouseState mouseState = Mouse.GetState();
             if(mouseState.LeftButton == ButtonState.Pressed)   
             {
-                scrManager.state = States.ScreenState.GS_MENU;
-                Boolean flag = false;
-                foreach (Screens scr in scrManager.screenList.Values)
-                {
-                    if (scr.state == States.ScreenState.GS_MENU)
-                    {
-                        flag = true;
-                        break;
-                    }
-                }
-                if (!flag)
-                {
-                    MenuScreen menu = new MenuScreen(scrManager, this.game, this.spriteBatch);
-                    scrManager.Append(States.ScreenState.GS_MENU,menu);
+               // scrManager.state = States.ScreenState.GS_MENU;
+               // Boolean flag = false;
+              //  foreach (Screens scr in scrManager.screenList.Values)
+               // {
+                //    if (scr.state == States.ScreenState.GS_MENU)
+               //     {
+                //        flag = true;
+                 //       break;
+               //     }
+                //}
+                //if (!flag)
+               // {                    
+                  //  MenuScreen menu = new MenuScreen(scrManager, this.game, this.spriteBatch);
+                  //  scrManager.Append(States.ScreenState.GS_MENU,menu);
                     scrManager.PlayScreen(States.ScreenState.GS_MENU);                   
-                }
+               // }
 
             }
            
