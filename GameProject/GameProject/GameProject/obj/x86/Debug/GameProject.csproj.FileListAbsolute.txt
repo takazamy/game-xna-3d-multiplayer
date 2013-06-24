@@ -8,4 +8,6 @@ E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\Gam
 E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\XnaGameNetworkEngine.dll
 E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\XnaGameNetworkEngine.pdb
 E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\XnaGameCore.pdb
-E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\1.xnb
+E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\mouse.xnb
+E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\SplashScreen.xnb
+E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\menuscreen.xnb

@@ -2,13 +2,31 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>1.png</Source>
-      <Name>1</Name>
+      <Source>SplashScreen.png</Source>
+      <Name>SplashScreen</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\1.xnb</Output>
-      <Time>2013-06-19T20:22:12.4457982+07:00</Time>
+      <Output>E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\SplashScreen.xnb</Output>
+      <Time>2013-06-22T20:11:26.0684221+07:00</Time>
+    </Item>
+    <Item>
+      <Source>mouse.png</Source>
+      <Name>mouse</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\mouse.xnb</Output>
+      <Time>2013-06-22T20:40:38.0906281+07:00</Time>
+    </Item>
+    <Item>
+      <Source>menuscreen.jpg</Source>
+      <Name>menuscreen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\menuscreen.xnb</Output>
+      <Time>2013-06-24T21:06:18.95293+07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
