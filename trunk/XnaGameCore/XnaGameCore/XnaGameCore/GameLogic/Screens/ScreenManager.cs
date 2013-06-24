@@ -16,11 +16,13 @@ namespace XnaGameCore.GameLogic.Screens
     /// <summary>
     /// This is a game component that implements IUpdateable.
     /// </summary>
-    public class ScreenManager : Microsoft.Xna.Framework.GameComponent
+    public class ScreenManager
     {
 
         #region Properties
         public Dictionary<States.ScreenState, Screens> screenList;
+        public Game game;
+        public SpriteBatch spriteBatch;
         //public List<Screens> ScreenList;
         //public Screens this[int index]
         //{
@@ -40,11 +42,11 @@ namespace XnaGameCore.GameLogic.Screens
         private int curIndex = -1;
         #endregion
 
-        public ScreenManager(Game game, SpriteBatch spriteBatch)
-            : base(game)
+        public ScreenManager(Game game, SpriteBatch spriteBatch)            
         {
             screenList = new Dictionary<States.ScreenState, Screens>();
-
+            this.game = game;
+            this.spriteBatch = spriteBatch;
             // TODO: Construct any child components here
         }
 
@@ -52,35 +54,32 @@ namespace XnaGameCore.GameLogic.Screens
         /// Allows the game component to perform any initialization it needs to before starting
         /// to run.  This is where it can query for any required services and load content.
         /// </summary>
-        public override void Initialize()
+        public virtual void Initialize()
         {
             // TODO: Add your initialization code here
-
-            base.Initialize();
+           
         }
 
         /// <summary>
         /// Allows the game component to update itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        public override void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime)
         {
             // TODO: Add your update code here
             currentScreen.Update(gameTime);
-            base.Update(gameTime);
+           
         }
 
         public void Append(States.ScreenState keys, Screens screen)
         {
-            screenList[keys] = screen;
-        //    screen.index = this.ScreenList.Count - 1;
-        //    ScreenList.Add(screen);
-        //    this.Game.Components.Add(screen);
+            screenList[keys] = screen;       
         }
 
         public void PlayScreen(States.ScreenState key)
         {
             currentScreen = screenList[key];
+            state = key;
         //    CurScreen.Visible = false;
         //    CurScreen.Enabled = false;
         //    this.CurScreen = ScreenList[index];
@@ -88,33 +87,10 @@ namespace XnaGameCore.GameLogic.Screens
         //    this.CurScreen.Visible = true;
         //    CurScreen.Enabled = true;
         }
-        //public void PlayScreen(States.ScreenState state)
-        //{
-        //    try
-        //    {
-        //        foreach (Screens scr in this.ScreenList)
-        //        {
-        //            if (scr.state == state)
-        //            {
-        //                CurScreen.Visible = false;
-        //                CurScreen.Enabled = false;
-        //                CurScreen = scr;
-        //                curIndex = scr.index;
-        //                this.CurScreen.Visible = true;
-        //                CurScreen.Enabled = true;
-        //                break;
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.StackTrace);
-        //    }
-        //}
+        
         public void NextScreen()
         {
-            state++;
-            currentScreen = screenList[state];
+              currentScreen = screenList[++state];
         //    CurScreen.Visible = false;
         //    CurScreen.Enabled = false;
         //    this.CurScreen = ScreenList[++curIndex];
@@ -122,22 +98,16 @@ namespace XnaGameCore.GameLogic.Screens
         //    CurScreen.Enabled = true;
         }
 
-        //public void PrevScreen()
-        //{
+        public void PrevScreen()
+        {
+            currentScreen = screenList[--state];
         //    CurScreen.Visible = false;
         //    CurScreen.Enabled = false;
         //    CurScreen = ScreenList[--curIndex];
         //    this.CurScreen.Visible = true;
         //    CurScreen.Enabled = true;
-        //}
+        }
 
-        //public void UpdateIndex()
-        //{
-        //    for (int i = 0; i < this.ScreenList.Count; i++)
-        //    {
-        //        ScreenList[i].index = i;
-        //    }
-        //}
-
+      
     }
 }

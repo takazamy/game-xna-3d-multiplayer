@@ -26,6 +26,7 @@ namespace XnaGameCore
         {
             this.name = name;
             this.game = game;
+            LoadContent();
             // TODO: Construct any child components here
         }
 

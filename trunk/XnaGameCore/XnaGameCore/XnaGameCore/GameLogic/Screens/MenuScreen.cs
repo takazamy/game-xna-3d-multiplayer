@@ -26,12 +26,12 @@ namespace XnaGameCore.GameLogic.Screens
         public ButtonComponent LanBtn = null;
         public ButtonComponent HostBtn = null;
         public ButtonComponent CreditBtn = null;
-        public MenuScreen(ScreenManager scrManager, Game game, SpriteBatch spriteBatch )
+        public MenuScreen(ScreenManager scrManager, Game game, SpriteBatch spriteBatch)
             : base(scrManager, game, spriteBatch)
         {
             this.state = States.ScreenState.GS_MENU;
             // TODO: Construct any child components here
-           
+            this.backGround = backGround;
            
            
         }
@@ -116,8 +116,8 @@ namespace XnaGameCore.GameLogic.Screens
 
         public override void Draw(GameTime gameTime)
         {
-            this.game.GraphicsDevice.Clear(Color.CornflowerBlue);
-            //spriteBatch.Draw(States.MenuScreen, Vector2.Zero, Color.White);
+            //this.game.GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Draw(backGround, Vector2.Zero, Color.White); 
         }
     }
 }
