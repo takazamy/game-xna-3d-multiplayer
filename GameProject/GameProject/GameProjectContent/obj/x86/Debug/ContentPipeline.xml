@@ -28,6 +28,27 @@
       <Output>E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\menuscreen.xnb</Output>
       <Time>2013-06-24T21:06:18.95293+07:00</Time>
     </Item>
+    <Item>
+      <Source>buttonImg.jpg</Source>
+      <Name>buttonImg</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor">255, 255, 255, 255</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\buttonImg.xnb</Output>
+      <Time>2013-06-25T22:12:08.1815217+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Arial.spritefont</Source>
+      <Name>Arial</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Arial.xnb</Output>
+      <Time>2013-06-25T22:23:49.5890242+07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

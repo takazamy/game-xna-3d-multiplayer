@@ -117,7 +117,31 @@ namespace XnaGameCore.GameLogic.Screens
         public override void Draw(GameTime gameTime)
         {
             //this.game.GraphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Draw(backGround, Vector2.Zero, Color.White); 
+            spriteBatch.Draw(backGround, Vector2.Zero, Color.White);
+            if (playBtn != null)
+            {
+                playBtn.Draw(gameTime, this.spriteBatch);
+            }
+            if (ExitBtn != null)
+            {
+                ExitBtn.Draw(gameTime, this.spriteBatch);
+            }
+            if (HelpBtn != null)
+            {
+                HelpBtn.Draw(gameTime, this.spriteBatch);
+            }
+            if (LanBtn != null)
+            {
+                LanBtn.Draw(gameTime, this.spriteBatch);
+            }
+            if (HostBtn != null)
+            {
+                HostBtn.Draw(gameTime, this.spriteBatch);
+            }
+            if (CreditBtn != null)
+            {
+               CreditBtn.Draw(gameTime, this.spriteBatch);
+            }
         }
     }
 }

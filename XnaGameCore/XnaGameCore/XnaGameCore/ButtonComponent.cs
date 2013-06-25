@@ -55,7 +55,10 @@ namespace XnaGameCore
         private int buttonHeight;
         private Rectangle currSourceRect;
         private Game game;
-        public ButtonComponent(Game game, String name, Vector2 location, int Width, int Height)            
+        private string buttonText;
+        private SpriteFont font;
+        private Vector2 textLocation;
+        public ButtonComponent(Game game, String name, Vector2 location, int Width, int Height, string btnText)            
         {            
             this.name = name;
             this.location = location;
@@ -64,8 +67,9 @@ namespace XnaGameCore
             bound = new Rectangle((int)location.X, (int)location.Y, buttonWidth, buttonHeight);
             currSourceRect = new Rectangle(0, 0, buttonWidth, buttonHeight);
             this.game = game;
+            buttonText = btnText;
             //GetTotalFrame();
-            
+            LoadContent();
             // TODO: Construct any child components here
         }
         
@@ -89,7 +93,8 @@ namespace XnaGameCore
         {
             buttonImage = this.game.Content.Load<Texture2D>(name);
             GetTotalFrame();
-           
+            font = this.game.Content.Load<SpriteFont>("Arial");
+            textLocation = new Vector2(this.location.X + buttonWidth / 2 - font.MeasureString(buttonText).X / 2, this.location.Y + this.buttonHeight / 2 - font.MeasureString(buttonText).Y / 2);
         }
 
         /// <summary>
@@ -155,6 +160,7 @@ namespace XnaGameCore
             {
                 spriteBatch.Draw(this.buttonImage, bound, currSourceRect, Color.White);
             }
+            spriteBatch.DrawString(font, buttonText, textLocation, Color.Red);
            // spriteBatch.End();           
         }
 
