@@ -56,8 +56,7 @@ namespace XnaGameCore.GameLogic.Screens
         /// </summary>
         public virtual void Initialize()
         {
-            // TODO: Add your initialization code here
-           
+            // TODO: Add your initialization code here           
         }
 
         /// <summary>
@@ -67,8 +66,7 @@ namespace XnaGameCore.GameLogic.Screens
         public virtual void Update(GameTime gameTime)
         {
             // TODO: Add your update code here
-            currentScreen.Update(gameTime);
-           
+            currentScreen.Update(gameTime);           
         }
 
         public void Append(States.ScreenState keys, Screens screen)
@@ -79,33 +77,17 @@ namespace XnaGameCore.GameLogic.Screens
         public void PlayScreen(States.ScreenState key)
         {
             currentScreen = screenList[key];
-            state = key;
-        //    CurScreen.Visible = false;
-        //    CurScreen.Enabled = false;
-        //    this.CurScreen = ScreenList[index];
-        //    this.curIndex = index;
-        //    this.CurScreen.Visible = true;
-        //    CurScreen.Enabled = true;
+            state = key;       
         }
         
         public void NextScreen()
         {
-              currentScreen = screenList[++state];
-        //    CurScreen.Visible = false;
-        //    CurScreen.Enabled = false;
-        //    this.CurScreen = ScreenList[++curIndex];
-        //    this.CurScreen.Visible = true;
-        //    CurScreen.Enabled = true;
+              currentScreen = screenList[++state];       
         }
 
         public void PrevScreen()
         {
-            currentScreen = screenList[--state];
-        //    CurScreen.Visible = false;
-        //    CurScreen.Enabled = false;
-        //    CurScreen = ScreenList[--curIndex];
-        //    this.CurScreen.Visible = true;
-        //    CurScreen.Enabled = true;
+            currentScreen = screenList[--state];       
         }
 
       

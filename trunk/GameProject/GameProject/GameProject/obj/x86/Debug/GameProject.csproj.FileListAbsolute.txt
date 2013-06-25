@@ -11,3 +11,5 @@ E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\Gam
 E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\mouse.xnb
 E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\SplashScreen.xnb
 E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\menuscreen.xnb
+E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\buttonImg.xnb
+E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Arial.xnb
