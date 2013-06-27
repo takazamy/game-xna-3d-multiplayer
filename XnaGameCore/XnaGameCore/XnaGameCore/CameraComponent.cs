@@ -15,9 +15,9 @@ using Microsoft.Xna.Framework.Storage;
 
 namespace XnaGameCore
 {
-    class CameraComponent
+    public class CameraComponent
     {
-         public Matrix view;
+        public Matrix view;
         public Matrix projection;
         public Vector3 cameraPosition;
         Vector3 cameraDirection;

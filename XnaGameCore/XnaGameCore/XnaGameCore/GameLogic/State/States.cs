@@ -16,7 +16,9 @@ namespace XnaGameCore.GameLogic.State
             GS_CREDIT = 4,
             GS_MAIN_GAME = 5,
             GS_ENDGAME = 6,
-            GS_EXIT = 7
+            GS_EXIT = 7,
+            GS_HOST = 8,
+            GS_JOIN = 9
         };
 
         public enum ButtonStateEnum

@@ -53,23 +53,7 @@ namespace XnaGameCore.GameLogic.Screens
             MouseState mouseState = Mouse.GetState();
             if(mouseState.LeftButton == ButtonState.Pressed)   
             {
-               // scrManager.state = States.ScreenState.GS_MENU;
-               // Boolean flag = false;
-              //  foreach (Screens scr in scrManager.screenList.Values)
-               // {
-                //    if (scr.state == States.ScreenState.GS_MENU)
-               //     {
-                //        flag = true;
-                 //       break;
-               //     }
-                //}
-                //if (!flag)
-               // {                    
-                  //  MenuScreen menu = new MenuScreen(scrManager, this.game, this.spriteBatch);
-                  //  scrManager.Append(States.ScreenState.GS_MENU,menu);
-                    scrManager.PlayScreen(States.ScreenState.GS_MENU);                   
-               // }
-
+                scrManager.PlayScreen(States.ScreenState.GS_MENU); 
             }
            
             
