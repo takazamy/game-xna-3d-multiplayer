@@ -43,43 +43,7 @@ namespace XnaGameCore.GameLogic.Screens
         public override void Initialize()
         {
             // TODO: Add your initialization code here
-            #region Load
-            
-            #endregion
-
-            #region Exit Click
-            //ExitBtn.OnMouseDown = delegate()
-            //{
-            //    this.Game.Exit();
-            //};
-            #endregion
-
-            #region Play Click
-            //playBtn.OnMouseDown = delegate()
-            //{
-            //    scrManager.state = Global.ScreenState.GS_MAIN_GAME;
-            //    Boolean flag = false;
-            //    foreach (Screen scr in scrManager.ScreenList)
-            //    {
-            //        if (scr.state == Global.ScreenState.GS_MAIN_GAME)
-            //        {
-            //            flag = true;
-            //            break;
-            //        }
-            //    }
-            //    if (!flag)
-            //    {
-            //        GameScreen game = new GameScreen(scrManager, this.Game);
-            //        scrManager.Append(game);
-
-            //        this.HideButton();
-            //        scrManager.PlayScreen(Global.ScreenState.GS_MAIN_GAME);
-            //    }
-                
-                
-            //};
-
-            #endregion
+          
            
 
         }

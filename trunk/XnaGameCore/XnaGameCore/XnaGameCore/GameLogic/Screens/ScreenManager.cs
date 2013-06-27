@@ -80,15 +80,15 @@ namespace XnaGameCore.GameLogic.Screens
             state = key;       
         }
         
-        public void NextScreen()
-        {
-              currentScreen = screenList[++state];       
-        }
+        //public void NextScreen()
+        //{
+        //      currentScreen = screenList[++state];       
+        //}
 
-        public void PrevScreen()
-        {
-            currentScreen = screenList[--state];       
-        }
+        //public void PrevScreen()
+        //{
+        //    currentScreen = screenList[--state];       
+        //}
 
       
     }
