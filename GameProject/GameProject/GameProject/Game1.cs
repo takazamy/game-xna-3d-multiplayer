@@ -12,6 +12,8 @@ using XnaGameCore.GameLogic.Screens;
 using XnaGameCore.GameLogic.State;
 using XnaGameCore;
 using GameProject.Core;
+using XnaGameNetworkEngine;
+using GameProject.Network;
 namespace GameProject
 {
     /// <summary>
@@ -23,6 +25,10 @@ namespace GameProject
         SpriteBatch spriteBatch;
         ScreenGameManager scrManager;
         public MouseComponent mouse;
+        public AsyncTcpServer server;
+        public AsyncTcpClient client;
+        public string address = System.Configuration.ConfigurationSettings.AppSettings["ServerIP"].ToString();
+        public int port = int.Parse(System.Configuration.ConfigurationSettings.AppSettings["Port"]);
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -43,6 +49,7 @@ namespace GameProject
             graphics.IsFullScreen = false;
             graphics.ApplyChanges();
             Window.Title = "BeachHead 3D Multiplayer";
+            
             base.Initialize();
         }
 
@@ -59,7 +66,9 @@ namespace GameProject
             scrManager.PlayScreen(States.ScreenState.GS_SPLASH_SCREEN);
 
             mouse = new MouseComponent(this, "mouse");
-                
+            server = new AsyncTcpServer(this);
+            client = new Client(this);
+            this.Components.Add(server);    
             // TODO: use this.Content to load your game content here
         }
 
