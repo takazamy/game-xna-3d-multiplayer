@@ -20,6 +20,7 @@ namespace GameProject.Core
         {
             this.Append(States.ScreenState.GS_SPLASH_SCREEN,new Splash(this,this.game,this.spriteBatch));
             this.Append(States.ScreenState.GS_MENU, new Menu(this,this.game,this.spriteBatch));
+            this.Append(States.ScreenState.GS_HOST, new Host(this, this.game, this.spriteBatch));
             base.Initialize();
         }
     }
