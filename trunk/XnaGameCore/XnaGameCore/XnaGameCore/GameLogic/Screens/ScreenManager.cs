@@ -23,18 +23,7 @@ namespace XnaGameCore.GameLogic.Screens
         public Dictionary<States.ScreenState, Screens> screenList;
         public Game game;
         public SpriteBatch spriteBatch;
-        //public List<Screens> ScreenList;
-        //public Screens this[int index]
-        //{
-        //    get
-        //    {
-        //        return ScreenList[index];
-        //    }
-        //    set
-        //    {
-        //        ScreenList[index] = value;
-        //    }
-        //}
+        
         public Screens currentScreen;
 
         public States.ScreenState state = States.ScreenState.GS_SPLASH_SCREEN;
@@ -80,16 +69,5 @@ namespace XnaGameCore.GameLogic.Screens
             state = key;       
         }
         
-        //public void NextScreen()
-        //{
-        //      currentScreen = screenList[++state];       
-        //}
-
-        //public void PrevScreen()
-        //{
-        //    currentScreen = screenList[--state];       
-        //}
-
-      
     }
 }
