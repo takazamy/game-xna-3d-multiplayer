@@ -1,0 +1,10 @@
+E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameServer\bin\Debug\GameServer.exe
+E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameServer\bin\Debug\GameServer.pdb
+E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameServer\obj\x86\Debug\GameServer.Properties.Resources.resources
+E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameServer\obj\x86\Debug\GameServer.csproj.GenerateResource.Cache
+E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameServer\obj\x86\Debug\GameServer.exe
+E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameServer\obj\x86\Debug\GameServer.pdb
+E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameServer\obj\x86\Debug\GameServer.csprojResolveAssemblyReference.cache
+E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameServer\bin\Debug\XnaGameNetworkEngine.dll
+E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameServer\bin\Debug\XnaGameNetworkEngine.pdb
+E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameServer\bin\Debug\GameServer.exe.config
