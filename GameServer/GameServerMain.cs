@@ -303,6 +303,7 @@ namespace GameServer
             }
             catch (SocketException se)
             {
+                ServerManager.WriteLogInfoServer(se, "Btn_start_Err");
                 this.Close();
             }
         }
@@ -403,8 +404,7 @@ namespace GameServer
             }
             catch (Exception ex)
             {
-                AppendToRichEditControl("OnClientConnect : " + ex.Message);
-                AppendToRichEditControl("OnClientConnect : " + ex.StackTrace);
+                ServerManager.WriteLogInfoServer(ex, "OnClientConnect-Err");
             }
         }
         #endregion
