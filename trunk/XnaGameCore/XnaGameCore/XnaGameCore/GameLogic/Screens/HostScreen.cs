@@ -10,6 +10,7 @@ namespace XnaGameCore.GameLogic.Screens
     public class HostScreen:Screens
     {
         public ButtonComponent createButton;
+        public ButtonComponent joinButton;
         public ButtonComponent backButton;
         public HostScreen(ScreenManager scrManager, Game game, SpriteBatch spriteBatch)
             : base(scrManager, game, spriteBatch)
@@ -32,6 +33,10 @@ namespace XnaGameCore.GameLogic.Screens
             {
                 backButton.Update(gameTime);
             }
+            if (joinButton != null)
+            {
+                joinButton.Update(gameTime);
+            }
         }
 
         public override void Draw(GameTime gameTime)
@@ -45,12 +50,16 @@ namespace XnaGameCore.GameLogic.Screens
             {
                 backButton.Draw(gameTime, spriteBatch);
             }
+            if (joinButton != null)
+            {
+                joinButton.Draw(gameTime, spriteBatch);
+            }
             
         }
 
         protected override void LoadContent()
         {
-            throw new NotImplementedException();
+
         }
     }
 }

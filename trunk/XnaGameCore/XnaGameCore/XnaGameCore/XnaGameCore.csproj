@@ -93,9 +93,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ButtonComponent.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="CameraComponent.cs" />
     <Compile Include="GameLogic\Screens\GameScreen.cs" />
     <Compile Include="GameLogic\Screens\HostScreen.cs" />
+    <Compile Include="GameLogic\Screens\JoinScreen.cs" />
     <Compile Include="GameLogic\Screens\MenuScreen.cs" />
     <Compile Include="GameLogic\Screens\ScreenManager.cs" />
     <Compile Include="GameLogic\Screens\SplashScreen.cs" />
