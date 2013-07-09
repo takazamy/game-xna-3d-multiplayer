@@ -26,7 +26,8 @@ namespace GameProject.Core
             menuImage = this.game.Content.Load<Texture2D>("hostImg");
             this.backGround = menuImage;
             createButton = new ButtonComponent(this.game, "buttonImg", new Vector2(100, 100), 150, 50, "Create");
-            backButton = new ButtonComponent(this.game, "buttonImg", new Vector2(100, 180), 150, 50, "Back");
+            joinButton = new ButtonComponent(this.game, "buttonImg", new Vector2(100, 180), 150, 50, "Join");
+            backButton = new ButtonComponent(this.game, "buttonImg", new Vector2(100, 250), 150, 50, "Back");
             addButtonHandler();
 
             base.Initialize();
@@ -35,20 +36,24 @@ namespace GameProject.Core
         {
             createButton.OnMouseDown = delegate() { createButtonHandler(); };
             backButton.OnMouseDown = delegate() { backButtonHandler(); };
-           
+            joinButton.OnMouseDown = delegate() { joinButtonHandler(); };
+        }
+
+        private void joinButtonHandler()
+        {
+
         }
 
         private void backButtonHandler()
         {
-            game1.server.Stop();
-
             scrManager.PlayScreen(States.ScreenState.GS_MENU);
         }
 
         private void createButtonHandler()
         {
-            game1.server.Start();
+            
         }
+
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
