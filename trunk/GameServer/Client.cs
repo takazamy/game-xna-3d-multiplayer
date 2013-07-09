@@ -11,7 +11,7 @@ namespace GameServer
         public Socket ClientSocket;
         private System.AsyncCallback WorkerCallBack;
         public byte[] DataBuffer;
-
+        public Participant parentParticipant;
         public Client()
         {
             this.DataBuffer = new byte[512];
@@ -48,8 +48,27 @@ namespace GameServer
 
         public void OnDataReceived(IAsyncResult asyn)
         {
+            try
+            {
+                int iRx = 0;
+                if (asyn != null)
+                {
+                    try
+                    {
+                        iRx = this.ClientSocket.EndReceive(asyn);
 
+                    }
+                    catch
+                    {
+                        return;
+                    }
+                }
 
+            }
+            catch (Exception ex)
+            {
+                ServerManager.WriteLogInfoServer(ex, "Server-Client-OnDataReceive:");
+            }
         }
         #endregion
     }
