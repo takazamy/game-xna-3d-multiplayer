@@ -14,6 +14,7 @@ using XnaGameCore;
 using GameProject.Core;
 using XnaGameNetworkEngine;
 using GameProject.Network;
+using System.Configuration;
 namespace GameProject
 {
     /// <summary>
@@ -23,12 +24,12 @@ namespace GameProject
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        ScreenGameManager scrManager;
+        public ScreenGameManager scrManager;
         public MouseComponent mouse;
         public AsyncTcpServer server;
         public AsyncTcpClient client;
-        public string address = System.Configuration.ConfigurationSettings.AppSettings["ServerIP"].ToString();
-        public int port = int.Parse(System.Configuration.ConfigurationSettings.AppSettings["Port"]);
+        public string address = ConfigurationManager.AppSettings["ServerIP"].ToString();
+        public int port = int.Parse(ConfigurationManager.AppSettings["Port"]);
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -67,7 +68,7 @@ namespace GameProject
 
             mouse = new MouseComponent(this, "mouse");
             server = new AsyncTcpServer(this);
-            client = new Client(this);
+            client = new Client(this,scrManager);
             this.Components.Add(server);    
             // TODO: use this.Content to load your game content here
         }

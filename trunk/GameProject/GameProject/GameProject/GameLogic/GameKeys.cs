@@ -5,7 +5,9 @@ using System.Text;
 
 namespace GameProject.GameLogic
 {
-    class GameKeys
+    public class GameKeys
     {
+
+        //public static const string 
     }
 }
