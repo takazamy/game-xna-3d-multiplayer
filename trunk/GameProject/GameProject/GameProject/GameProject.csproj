@@ -93,6 +93,9 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\Json50r6\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -119,7 +122,8 @@
     <Compile Include="GameLogic\GameLogic.cs" />
     <Compile Include="GameLogic\GameRules.cs" />
     <Compile Include="Network\Client.cs" />
-    <Compile Include="Network\Server.cs" />
+    <Compile Include="Network\RequestHandler.cs" />
+    <Compile Include="Participant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
