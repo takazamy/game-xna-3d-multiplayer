@@ -20,7 +20,8 @@ namespace GameProject.Network
 
         protected override void OnDataReceived(string data, SocketPacket packet)
         {
-
+            //Case Create Game
+            //Gọi Class Create
             base.OnDataReceived(data, packet);
         }
 

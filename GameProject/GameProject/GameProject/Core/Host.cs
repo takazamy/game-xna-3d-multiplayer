@@ -7,12 +7,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using XnaGameCore.GameLogic.State;
 using XnaGameCore;
+using XnaGameNetworkEngine;
 
 namespace GameProject.Core
 {
     public class Host:HostScreen
     {
         private Game1 game1;
+        AsyncTcpClient client;
         public Host(ScreenManager scrManager, Game game, SpriteBatch spriteBatch)
             : base(scrManager, game, spriteBatch)
         {
@@ -22,6 +24,7 @@ namespace GameProject.Core
         public override void Initialize()
         {
             this.game1 = (Game1)game;
+            client = game1.client;
             Texture2D menuImage = new Texture2D(this.game.GraphicsDevice, 800, 600);
             menuImage = this.game.Content.Load<Texture2D>("hostImg");
             this.backGround = menuImage;
@@ -41,7 +44,7 @@ namespace GameProject.Core
 
         private void joinButtonHandler()
         {
-
+            
         }
 
         private void backButtonHandler()
@@ -51,6 +54,7 @@ namespace GameProject.Core
 
         private void createButtonHandler()
         {
+            //Send Yêu Cầu Tạo Game lên Server.
             
         }
 
