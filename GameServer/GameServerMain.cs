@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using System.Net.Sockets;
 using System.Net;
 using System.IO;
-
+using Newtonsoft.Json.Linq;
 namespace GameServer
 {
     public class GameServerMain: System.Windows.Forms.Form
@@ -389,11 +389,16 @@ namespace GameServer
             {
                 // Add the workerSocket reference to our ArrayList
                 Client newClt = new Client();
-                newClt.ClientSocket = mainSocket.EndAccept(asyn);
+                newClt.ClientSocket = mainSocket.EndAccept(asyn);                
+                newClt.init(ServerManager.id++);
                 if (newClt.ClientSocket.Connected)
                 {
                     AppendToRichEditControl("OnClientConnect : " + newClt.ClientSocket.RemoteEndPoint);
                     newClt.WaitForData();
+                    JObject mesg = new JObject();
+                    mesg["command"] = "Connect";
+                    mesg["id"] = newClt.parentParticipant.ClientId;
+                    newClt.send(mesg.ToString());
                 }
                 else
                     AppendToRichEditControl("OnClientConnect : khong the ket noi");

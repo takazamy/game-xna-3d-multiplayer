@@ -9,15 +9,19 @@ namespace GameServer
     {
         #region Properties
 
-        public int hp;
-        public string nickName;
-
+        public int hp;        
+        public int ClientId;
         #endregion
 
-        public Participant(string nick)
+        public Participant(int clientId)
+        {
+            hp = 100;            
+            ClientId = clientId;
+        }
+
+        public void reset()
         {
             hp = 100;
-            nickName = nick;
         }
     }
 }

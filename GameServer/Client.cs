@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Net.Sockets;
+using XnaGameNetworkEngine;
 
 namespace GameServer
 {
@@ -14,7 +15,12 @@ namespace GameServer
         public Participant parentParticipant;
         public Client()
         {
-            this.DataBuffer = new byte[512];
+            this.DataBuffer = new byte[512];            
+        }
+
+        public void init(int id)
+        {
+            parentParticipant = new Participant(id);
         }
         #region Wait for data
 
@@ -68,6 +74,39 @@ namespace GameServer
             catch (Exception ex)
             {
                 ServerManager.WriteLogInfoServer(ex, "Server-Client-OnDataReceive:");
+            }
+        }
+        #endregion
+
+        #region SEND
+        public void send(string mesg)
+        {
+            try
+            {
+                //string _data = String.Format(mesg);
+                byte[] _dataBytes = Encoding.ASCII.GetBytes(mesg);
+                //ClientSocket.BeginSend(_dataBytes, 0, _dataBytes.Length, SocketFlags.None, new AsyncCallback(OnSendClient), this);
+                ClientSocket.Send(_dataBytes);
+            }
+            catch
+            {
+            }
+        }
+
+        private void OnSendClient(IAsyncResult ar)
+        {
+            try
+            {
+                SocketPacket _client = (SocketPacket)ar.AsyncState;
+                int _sent = _client.Socket.EndSend(ar);
+            }
+            catch (ObjectDisposedException ode)
+            {
+               // WriteError(ode);
+            }
+            catch (SocketException se)
+            {
+               // WriteError(se);
             }
         }
         #endregion
