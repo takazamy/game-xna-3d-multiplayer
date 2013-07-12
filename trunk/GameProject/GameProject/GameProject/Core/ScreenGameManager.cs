@@ -10,17 +10,19 @@ namespace GameProject.Core
 {
     public class ScreenGameManager:ScreenManager
     {
-        public ScreenGameManager(Game game, SpriteBatch spriteBatch)
+        public GameManager gameManager;
+        public ScreenGameManager(Game game, SpriteBatch spriteBatch, GameManager manager)
             : base(game, spriteBatch)
         {
+            gameManager = manager;
             Initialize();
         }
 
         public override void Initialize()
         {
-            this.Append(States.ScreenState.GS_SPLASH_SCREEN,new Splash(this,this.game,this.spriteBatch));
-            this.Append(States.ScreenState.GS_MENU, new Menu(this,this.game,this.spriteBatch));
-            this.Append(States.ScreenState.GS_HOST, new Host(this, this.game, this.spriteBatch));
+            this.Append(States.ScreenState.GS_SPLASH_SCREEN, new Splash(this, this.game, this.spriteBatch, gameManager));
+            this.Append(States.ScreenState.GS_MENU, new Menu(this, this.game, this.spriteBatch, gameManager));
+            this.Append(States.ScreenState.GS_HOST, new Host(this, this.game, this.spriteBatch, gameManager));
             base.Initialize();
         }
     }

@@ -10,9 +10,11 @@ namespace GameProject.Core
 {
     public class Splash:SplashScreen
     {
-        public Splash(ScreenManager scrManage, Game game, SpriteBatch spriteBatch)
+        public GameManager gameManager;
+        public Splash(ScreenManager scrManage, Game game, SpriteBatch spriteBatch, GameManager manager)
             : base(scrManage, game, spriteBatch)
         {
+            gameManager = manager;
             Initialize();
         }
 

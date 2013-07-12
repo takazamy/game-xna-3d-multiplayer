@@ -11,16 +11,17 @@ namespace GameProject.Core
 {
     public class Menu:MenuScreen
     {
-        private Game1 game1;
-        public Menu(ScreenManager scrManager, Game game, SpriteBatch spriteBatch)
+        private GameManager gameManager;
+        public Menu(ScreenManager scrManager, Game game, SpriteBatch spriteBatch, GameManager manager)
             : base(scrManager, game, spriteBatch)
         {
+            gameManager = manager;
             Initialize();
         }
 
         public override void Initialize()
         {
-            game1 = (Game1)game;
+           
             Texture2D menuImage = new Texture2D(this.game.GraphicsDevice, 800, 600);
             menuImage = this.game.Content.Load<Texture2D>("menuscreen");
             this.backGround = menuImage;
@@ -50,7 +51,7 @@ namespace GameProject.Core
 
         private void playButtonHandler()
         {
-            game1.client.Connect(game1.address, game1.port);
+            gameManager.client.Connect(gameManager.address, gameManager.port);
             //scrManager.PlayScreen(States.ScreenState.GS_HOST);
         }
 
