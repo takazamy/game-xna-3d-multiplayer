@@ -24,12 +24,11 @@ namespace GameProject
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        public ScreenGameManager scrManager;
+        
         public MouseComponent mouse;
         public AsyncTcpServer server;
-        public AsyncTcpClient client;
-        public string address = ConfigurationManager.AppSettings["ServerIP"].ToString();
-        public int port = int.Parse(ConfigurationManager.AppSettings["Port"]);
+
+        public GameManager gameManager;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -62,13 +61,12 @@ namespace GameProject
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            scrManager = new ScreenGameManager(this, this.spriteBatch);        
-           
-            scrManager.PlayScreen(States.ScreenState.GS_SPLASH_SCREEN);
+
+            gameManager = new GameManager(this, this.spriteBatch);
 
             mouse = new MouseComponent(this, "mouse");
             server = new AsyncTcpServer(this);
-            client = new Client(this,scrManager);
+            
             this.Components.Add(server);    
             // TODO: use this.Content to load your game content here
         }
@@ -95,7 +93,7 @@ namespace GameProject
 
             // TODO: Add your update logic here
             mouse.Update(gameTime);
-            scrManager.Update(gameTime);
+            gameManager.Update(gameTime);
             
             base.Update(gameTime);
         }
@@ -109,7 +107,7 @@ namespace GameProject
             GraphicsDevice.Clear(Color.CornflowerBlue);
             this.spriteBatch.Begin();
             // TODO: Add your drawing code here
-            scrManager.currentScreen.Draw(gameTime);
+            gameManager.Draw(gameTime);
             mouse.Draw(gameTime, this.spriteBatch);
             this.spriteBatch.End();
             base.Draw(gameTime);

@@ -11,13 +11,13 @@ namespace GameProject
 
         public int hp;
         public string nickName;
-
+        public int ClientId;
         #endregion
 
-        public Participant(string nick)
+        public Participant(int id)
         {
             hp = 100;
-            nickName = nick;
+            this.ClientId = id;
         }
     }
 }

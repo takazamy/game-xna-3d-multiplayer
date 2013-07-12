@@ -5,9 +5,11 @@ using System.Text;
 
 namespace GameProject.GameLogic
 {
-    public class GameKeys
+    public static class GameKeys
     {
-
+        //game properties keys
+        public const string ID = "id";
+        public const string ROOMID = "roomid";
         //public static const string 
     }
 }
