@@ -17,7 +17,7 @@ namespace GameServer
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnStop;
-        private System.ComponentModel.IContainer components;
+       // private System.ComponentModel.IContainer components;
         
         private System.Windows.Forms.RichTextBox richTextBoxReceivedMsg;
         private System.Windows.Forms.Label lblIP;
@@ -360,10 +360,7 @@ namespace GameServer
         {
             if (disposing)
             {
-                if (components != null)
-                {
-                    components.Dispose();
-                }
+                
             }
             base.Dispose(disposing);
         }
@@ -390,15 +387,12 @@ namespace GameServer
                 // Add the workerSocket reference to our ArrayList
                 Client newClt = new Client();
                 newClt.ClientSocket = mainSocket.EndAccept(asyn);                
-                newClt.init(ServerManager.id++);
+               
                 if (newClt.ClientSocket.Connected)
                 {
                     AppendToRichEditControl("OnClientConnect : " + newClt.ClientSocket.RemoteEndPoint);
                     newClt.WaitForData();
-                    JObject mesg = new JObject();
-                    mesg["command"] = "Connect";
-                    mesg["id"] = newClt.parentParticipant.ClientId;
-                    newClt.send(mesg.ToString());
+                    GameRequest.sendConnected(newClt, newClt.parentParticipant.ClientId);
                 }
                 else
                     AppendToRichEditControl("OnClientConnect : khong the ket noi");

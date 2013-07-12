@@ -16,6 +16,8 @@ namespace GameServer
         public static DateTime TimeUpdateQuantity = DateTime.Now;
         public static GameServerMain MainForm = new GameServerMain();
         public static int id = 0;
+        public static int rId = 0;
+
         public static Hashtable roomList = new Hashtable();			//Room List...      
         public static Hashtable socketList = new Hashtable();			//Socket List....
         public static Hashtable ClientList = new Hashtable();

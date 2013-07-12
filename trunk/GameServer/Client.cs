@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Net.Sockets;
 using XnaGameNetworkEngine;
+using GameServer.Handler;
+using Newtonsoft.Json.Linq;
 
 namespace GameServer
 {
@@ -13,14 +15,23 @@ namespace GameServer
         private System.AsyncCallback WorkerCallBack;
         public byte[] DataBuffer;
         public Participant parentParticipant;
+        public Dictionary<string, IHandler> handlerList;
+        public Room refRoom;
         public Client()
         {
-            this.DataBuffer = new byte[512];            
+            this.DataBuffer = new byte[512];
+            init(ServerManager.id++);
         }
 
         public void init(int id)
         {
             parentParticipant = new Participant(id);
+            handlerList = new Dictionary<string, IHandler>();
+
+        }
+        public void initHandler()
+        {
+            handlerList.Add(GameCommand.CREATE_GAME, new CreateGameHandler(this));
         }
         #region Wait for data
 
@@ -50,7 +61,7 @@ namespace GameServer
         #endregion
         #region On data receive
 
-        int iFlag = 0;
+        //int iFlag = 0;
 
         public void OnDataReceived(IAsyncResult asyn)
         {
@@ -69,6 +80,19 @@ namespace GameServer
                         return;
                     }
                 }
+                else
+                    return;
+                char[] chars = new char[iRx + 1];
+
+                // Extract the characters as a buffer
+                System.Text.Decoder d = Encoding.UTF8.GetDecoder();
+                int charLen = d.GetChars(this.DataBuffer, 0, iRx, chars, 0);
+
+                JObject dataReceive = JObject.Parse(new string(chars));
+                IHandler handler = handlerList[(string)dataReceive[GameCommand.COMMAND]];
+                handler.Handler(dataReceive);
+
+
 
             }
             catch (Exception ex)
@@ -102,10 +126,12 @@ namespace GameServer
             }
             catch (ObjectDisposedException ode)
             {
+                ServerManager.WriteLogInfoServer(ode, "OnSendClient");
                // WriteError(ode);
             }
             catch (SocketException se)
             {
+                ServerManager.WriteLogInfoServer(se, "OnSendClient");
                // WriteError(se);
             }
         }
