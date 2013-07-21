@@ -18,9 +18,9 @@ namespace GameServer
         public static int id = 0;
         public static int rId = 0;
 
-        public static Hashtable roomList = new Hashtable();			//Room List...      
+        public static Dictionary<int, Room> roomList = new Dictionary<int,Room>();			//Room List...      
         public static Hashtable socketList = new Hashtable();			//Socket List....
-        public static Hashtable ClientList = new Hashtable();
+        public static Dictionary<int,Client> ClientList = new Dictionary<int,Client>();
 
         public static void WriteLogInfoServer(Exception ex, string message)
         {

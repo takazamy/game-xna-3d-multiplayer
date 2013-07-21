@@ -10,5 +10,8 @@ namespace GameServer
         //game properties keys
         public static string ID = "id";
         public static string ROOMID = "roomid";
+        public static string NUMBER_USERS = "numberusers";
+        public static string MAX = "max";
+        public static string ROOM_LIST = "roomlist";
     }
 }

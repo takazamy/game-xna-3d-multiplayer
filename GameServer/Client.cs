@@ -27,11 +27,13 @@ namespace GameServer
         {
             parentParticipant = new Participant(id);
             handlerList = new Dictionary<string, IHandler>();
+            initHandler();
 
         }
         public void initHandler()
         {
             handlerList.Add(GameCommand.CREATE_GAME, new CreateGameHandler(this));
+            handlerList.Add(GameCommand.GET_LIST_ROOM,new GetListRoomHandler(this));
         }
         #region Wait for data
 
@@ -90,7 +92,11 @@ namespace GameServer
 
                 JObject dataReceive = JObject.Parse(new string(chars));
                 IHandler handler = handlerList[(string)dataReceive[GameCommand.COMMAND]];
-                handler.Handler(dataReceive);
+                if (handler.Valid(dataReceive))
+                {
+                    handler.Handler(dataReceive);    
+                }
+                
 
 
 

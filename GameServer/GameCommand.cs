@@ -11,5 +11,6 @@ namespace GameServer
         //game logic keys
         public static string CONNECT = "connect";
         public static string CREATE_GAME = "create";
+        public static string GET_LIST_ROOM = "getlistroom";
     }
 }
