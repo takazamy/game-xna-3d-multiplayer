@@ -28,14 +28,29 @@ namespace XnaGameCore.GameLogic.Screens
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            joinButton.Update(gameTime);
-            scanButton.Update(gameTime);
-            backButton.Update(gameTime);
+            if (joinButton != null)
+            {
+                joinButton.Update(gameTime);
+            }
+            if (scanButton != null)
+            {
+                scanButton.Update(gameTime);
+            }
+            if (backButton != null)
+            {
+                backButton.Update(gameTime);
+            }
+           
+            
         }
 
         public override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            spriteBatch.Draw(backGround, Vector2.Zero, Color.White);
+            if (backGround != null)
+            {
+                spriteBatch.Draw(backGround, Vector2.Zero, Color.White);
+            }
+           
             if (scanButton != null)
             {
                 scanButton.Draw(gameTime, spriteBatch);
@@ -48,6 +63,7 @@ namespace XnaGameCore.GameLogic.Screens
             {
                 backButton.Draw(gameTime, spriteBatch);
             }
+            this.enable = true;
         }
     }
 }

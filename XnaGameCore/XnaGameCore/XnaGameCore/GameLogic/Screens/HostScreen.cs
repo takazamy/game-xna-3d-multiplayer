@@ -25,18 +25,23 @@ namespace XnaGameCore.GameLogic.Screens
 
         public override void Update(GameTime gameTime)
         {
-            if (createButton != null)
+           
+            if (enable)
             {
-                createButton.Update(gameTime);
+                if (createButton != null)
+                {
+                    createButton.Update(gameTime);
+                }
+                if (backButton != null)
+                {
+                    backButton.Update(gameTime);
+                }
+                if (joinButton != null)
+                {
+                    joinButton.Update(gameTime);
+                }
             }
-            if (backButton != null)
-            {
-                backButton.Update(gameTime);
-            }
-            if (joinButton != null)
-            {
-                joinButton.Update(gameTime);
-            }
+           
         }
 
         public override void Draw(GameTime gameTime)
@@ -54,7 +59,7 @@ namespace XnaGameCore.GameLogic.Screens
             {
                 joinButton.Draw(gameTime, spriteBatch);
             }
-            
+            this.enable = true;
         }
 
         protected override void LoadContent()

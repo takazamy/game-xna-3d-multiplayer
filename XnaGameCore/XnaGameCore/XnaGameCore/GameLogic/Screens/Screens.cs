@@ -25,11 +25,13 @@ namespace XnaGameCore.GameLogic.Screens
         protected Texture2D backGround;
         protected SpriteBatch spriteBatch;
         protected Game game;
+        public Boolean enable;
         public Screens(ScreenManager scrManager, Game game, SpriteBatch _spritebatch)            
         {
             spriteBatch = _spritebatch;
             this.scrManager = scrManager;
             this.game = game;
+             enable = false;
             // TODO: Construct any child components here
         }
 

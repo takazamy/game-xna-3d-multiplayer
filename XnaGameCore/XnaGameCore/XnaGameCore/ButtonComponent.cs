@@ -69,6 +69,7 @@ namespace XnaGameCore
             this.game = game;
             buttonText = btnText;
             //GetTotalFrame();
+            
             LoadContent();
             // TODO: Construct any child components here
         }
@@ -104,7 +105,7 @@ namespace XnaGameCore
         public void Update(GameTime gameTime)
         {
             // TODO: Add your update code here
-            MouseState state = Mouse.GetState();
+            MouseState state = Mouse.GetState();            
             if (state.LeftButton == ButtonState.Pressed && LastState.LeftButton == ButtonState.Released)
             {
                 if (bound.Contains(new Point(state.X, state.Y)))
