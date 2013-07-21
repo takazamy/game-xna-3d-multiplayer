@@ -26,19 +26,13 @@ namespace GameProject.Core
             menuImage = this.game.Content.Load<Texture2D>("menuscreen");
             this.backGround = menuImage;
 
-            this.playBtn = new ButtonComponent(this.game, "buttonImg", new Vector2(100, 100), 150, 50, "Play");
-            //this.HostBtn = new ButtonComponent(this.game, "buttonImg", new Vector2(100, 100), 150, 50, "Create Game");
-            //this.LanBtn = new ButtonComponent(this.game, "buttonImg", new Vector2(270, 100), 150, 50, "Join Game");
+            this.playBtn = new ButtonComponent(this.game, "buttonImg", new Vector2(100, 100), 150, 50, "Play");            
             this.ExitBtn = new ButtonComponent(this.game, "buttonImg", new Vector2(440, 100), 150, 50, "Exit");
             addButtonHandler();
             base.Initialize();
         }
         public override void Update(GameTime gameTime)
         {
-            //HostBtn.Update(gameTime);
-            //LanBtn.Update(gameTime);
-            playBtn.Update(gameTime);
-            ExitBtn.Update(gameTime);
             base.Update(gameTime);
         }
         private void addButtonHandler()
