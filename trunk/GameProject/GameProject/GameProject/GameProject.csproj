@@ -115,9 +115,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\GameManager.cs" />
+    <Compile Include="Core\Host.cs" />
     <Compile Include="Core\Join.cs" />
     <Compile Include="Core\MainGame.cs" />
-    <Compile Include="Core\Host.cs" />
     <Compile Include="Core\Menu.cs" />
     <Compile Include="Core\ScreenGameManager.cs" />
     <Compile Include="Core\Splash.cs" />
@@ -133,6 +133,7 @@
     <Compile Include="Network\ReceiveConnectHandler.cs" />
     <Compile Include="Network\ReceiveCreateGameHandler.cs" />
     <Compile Include="Network\ReceiveGetListRoomHandler.cs" />
+    <Compile Include="Network\ReceiveJoinRoomHandler.cs" />
     <Compile Include="Network\RequestHandler.cs" />
     <Compile Include="Participant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

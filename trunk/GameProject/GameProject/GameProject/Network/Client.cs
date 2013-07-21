@@ -30,6 +30,7 @@ namespace GameProject.Network
             handlerList.Add(GameCommand.CONNECT, new ReceiveConnectHandler(this, scrManager));
             handlerList.Add(GameCommand.CREATE_GAME, new ReceiveCreateGameHandler(this));
             handlerList.Add(GameCommand.GET_LIST_ROOM, new ReceiveGetListRoomHandler(this, scrManager));
+            handlerList.Add(GameCommand.JOIN_ROOM, new ReceiveJoinRoomHandler(this));
         }
         protected override void OnDataReceived(string data, SocketPacket packet)
         {
