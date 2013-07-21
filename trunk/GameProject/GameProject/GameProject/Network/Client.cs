@@ -8,6 +8,7 @@ using GameProject.Core;
 using XnaGameCore.GameLogic.State;
 using Newtonsoft.Json.Linq;
 using GameProject.GameLogic;
+using System.Net.Sockets;
 
 namespace GameProject.Network
 {
@@ -58,7 +59,8 @@ namespace GameProject.Network
                 //string _data = String.Format(mesg);
                 byte[] _dataBytes = Encoding.ASCII.GetBytes(mesg);
                 //ClientSocket.BeginSend(_dataBytes, 0, _dataBytes.Length, SocketFlags.None, new AsyncCallback(OnSendClient), this);
-                this.m_socket.Socket.Send(_dataBytes);
+                //this.m_socket.Socket.Send(_dataBytes);
+                m_socket.Socket.BeginSend(_dataBytes, 0, _dataBytes.Length, SocketFlags.None, new AsyncCallback(OnSendData), m_socket);
             }
             catch
             {

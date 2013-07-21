@@ -19,10 +19,10 @@ namespace GameProject.Network
         public override void Handler(JObject data)
         {
             //Load Game
-
+            Console.WriteLine("Tao Phong");
             //
             this.clt.roomId = (int)data[GameKeys.ROOMID];
-            clt.scrManager.gameManager.room.Add(clt.parentParticipant);
+            //clt.scrManager.gameManager.room.Add(clt.parentParticipant);
             clt.scrManager.PlayScreen(States.ScreenState.GS_MAIN_GAME);
         }
     }
