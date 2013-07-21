@@ -20,6 +20,7 @@ namespace GameProject.Network
 
         public override void Handler(JObject data)
         {
+            scrManager.PlayScreen(States.ScreenState.GS_JOIN);
             Join joinScreen = (Join)scrManager.GetScreensByState(States.ScreenState.GS_JOIN);
             joinScreen.ListRoomData = (JArray)data[GameKeys.ROOM_LIST];
         }

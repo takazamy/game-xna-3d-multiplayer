@@ -79,7 +79,7 @@ namespace GameProject.Core
                         
                         if (infoList[i].CheckClick(gameManager.mouse.location))
                         {
-                            RequestHandler.SendJoinRoom(this.client, infoList[i].roomid);
+                            RequestHandler.SendJoinRoom(client, infoList[i].roomid);
                             break;
                         }
                     }
@@ -97,7 +97,7 @@ namespace GameProject.Core
 
         private void backButtonHandler()
         {
-            scrManager.PlayScreen(States.ScreenState.GS_MENU);
+            scrManager.PlayScreen(States.ScreenState.GS_HOST);
         }
 
         public override void Draw(GameTime gameTime)
