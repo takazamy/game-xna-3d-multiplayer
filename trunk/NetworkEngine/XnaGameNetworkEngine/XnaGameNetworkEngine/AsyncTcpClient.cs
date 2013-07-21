@@ -264,7 +264,7 @@ namespace XnaGameNetworkEngine
             }
         }
 
-        private void OnSendData(IAsyncResult ar)
+        public void OnSendData(IAsyncResult ar)
         {
             try
             {
