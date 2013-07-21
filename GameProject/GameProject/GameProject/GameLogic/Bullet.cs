@@ -12,7 +12,7 @@ namespace GameProject
     class Bullet:BillboardSystem
     {
         public int damage;
-        public float speed;
+        public float speed = 0.1f;
         Vector3 directionVector;
         float timeLife;
 
@@ -22,9 +22,17 @@ namespace GameProject
         {
 
         }
-        public void Update(GameTime gameTime, Vector3 directionVector)
+        public void Update(Vector3 directionVector)
         {
-
+            this.Move(this.billboardPosition, directionVector);
+        }
+        private void Move(Vector3[] position, Vector3 directionVector)
+        {
+            for (int i = 0; i < position.Length; i++)
+            {
+                position[i] += directionVector * speed;
+            }
+            GeneratePactices(position);
         }
     }
 }
