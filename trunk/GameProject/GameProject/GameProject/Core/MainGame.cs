@@ -25,7 +25,7 @@ namespace GameProject.Core
     {
         CameraComponent camera;
         LoadMap map;
-        Turret turret;
+       // Turret turret;
         Skybox skyBox;
         BillboardSystem trees;
         Effect modelEffect, mapEffect;
@@ -52,7 +52,7 @@ namespace GameProject.Core
             mapEffect = game.Content.Load<Effect>("Effect/MapEffect");
             camera = new CameraComponent(game, new Vector3(128, 8, 128), new Vector3(128, 8, 138), new Vector3(0, 1, 0),gameManager.mouse);
             map = new LoadMap("../../../Map/map1.bmp", "Texture/grass", game);
-            turret = new Turret("Model/turret", modelEffect, new Vector3(128, 0, 128), camera, game);
+            //turret = new Turret("Model/turret", modelEffect, new Vector3(128, 0, 128), camera, game);
             skyBox = new Skybox("Model/cube", "Effect/Skybox", "Texture/Islands", game.Content);
 
 
@@ -73,7 +73,7 @@ namespace GameProject.Core
             if (enable)
             {
                 camera.Update(gameTime);
-                turret.Update(camera.upDownRotation, camera.leftRightRotation);
+               // turret.Update(camera.upDownRotation, camera.leftRightRotation);
                // turret.Update(0f, 0f);
                 
             }
@@ -88,7 +88,7 @@ namespace GameProject.Core
             game.GraphicsDevice.RasterizerState = rs;
 
             map.DrawMap(mapEffect, "AddTexture", camera.view, camera.projection, Matrix.Identity);
-            turret.DrawModel("Lighting", 0.1f, camera);
+            //turret.DrawModel("Lighting", 0.1f, camera);
             skyBox.Draw(camera.view, camera.projection, camera.cameraPosition);
             trees.Draw(camera.view,camera.projection,camera.cameraUp,Vector3.Cross(camera.cameraUp,camera.cameraDirection));
             base.Draw(gameTime);
