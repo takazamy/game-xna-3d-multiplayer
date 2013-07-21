@@ -10,5 +10,6 @@ namespace GameProject.GameLogic
         public static string COMMAND = "cmd";
         public const string CONNECT = "connect";
         public static string CREATE_GAME = "create";
+        public static string GET_LIST_ROOM = "getlistroom";
     }
 }
