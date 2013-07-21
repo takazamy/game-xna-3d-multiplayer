@@ -16,6 +16,7 @@ namespace GameServer.Handler
 
         public override void Handler(JObject data)
         {
+            
             JObject room;
             JArray roomList = new JArray();
             foreach (var item in ServerManager.roomList)
