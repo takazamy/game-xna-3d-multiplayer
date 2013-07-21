@@ -145,6 +145,8 @@ namespace XnaGameCore
                 }
             }
             LastState = state;
+            bound.Location = new Point((int)location.X,(int)location.Y);
+            textLocation = new Vector2(this.location.X + buttonWidth / 2 - font.MeasureString(buttonText).X / 2, this.location.Y + this.buttonHeight / 2 - font.MeasureString(buttonText).Y / 2);
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
