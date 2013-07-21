@@ -10,9 +10,9 @@ namespace XnaGameNetworkEngine
     {
         #region Members
         protected Socket m_socket;
-        protected byte[] m_buffer = new byte[256];
+        protected byte[] m_buffer = new byte[512];
         protected byte[] m_sendBuffer = new byte[1];
-        protected int m_defaultLength = 256;
+        protected int m_defaultLength = 512;
         protected string m_message = String.Empty;
         protected string m_id = String.Empty;
 
