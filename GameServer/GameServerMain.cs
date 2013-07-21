@@ -385,11 +385,19 @@ namespace GameServer
             try
             {
                 // Add the workerSocket reference to our ArrayList
+                
                 Client newClt = new Client();
                 newClt.ClientSocket = mainSocket.EndAccept(asyn);                
                
                 if (newClt.ClientSocket.Connected)
                 {
+                    String data = newClt.ClientSocket.RemoteEndPoint.ToString();
+                    String[] ip = data.Split(':');
+                    if (!ServerManager.CheckExistClient(ip[0]))
+                    {
+                        return;
+                    }
+                    ServerManager.ClientList.Add(ip[0], newClt);
                     AppendToRichEditControl("OnClientConnect : " + newClt.ClientSocket.RemoteEndPoint);
                     newClt.WaitForData();
                     GameRequest.sendConnected(newClt, newClt.parentParticipant.ClientId);

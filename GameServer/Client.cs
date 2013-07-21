@@ -20,7 +20,7 @@ namespace GameServer
         public Client()
         {
             this.DataBuffer = new byte[512];
-            init(ServerManager.id++);
+            init(++ServerManager.id);
         }
 
         public void init(int id)
@@ -90,15 +90,15 @@ namespace GameServer
                 // Extract the characters as a buffer
                 System.Text.Decoder d = Encoding.UTF8.GetDecoder();
                 int charLen = d.GetChars(this.DataBuffer, 0, iRx, chars, 0);
-
+                
                 JObject dataReceive = JObject.Parse(new string(chars));
                 IHandler handler = handlerList[(string)dataReceive[GameCommand.COMMAND]];
                 if (handler.Valid(dataReceive))
                 {
                     handler.Handler(dataReceive);    
                 }
-                
 
+                this.ClientSocket.BeginReceive(this.DataBuffer, 0, 512, SocketFlags.None, WorkerCallBack, this);
 
 
             }
