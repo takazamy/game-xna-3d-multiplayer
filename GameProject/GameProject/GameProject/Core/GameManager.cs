@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Configuration;
 using XnaGameCore.GameLogic.State;
 using XnaGameCore;
+using GameProject.GameLogic;
 
 namespace GameProject.Core
 {
@@ -19,6 +20,7 @@ namespace GameProject.Core
         public int port = int.Parse(ConfigurationManager.AppSettings["Port"]);
         public MouseComponent mouse;
         SpriteBatch spriteBatch;
+        public Room room;
         public GameManager(Game game, SpriteBatch spriteBatch)
         {
             this.spriteBatch = spriteBatch;
@@ -27,7 +29,7 @@ namespace GameProject.Core
             client = new Client(game, scrManager);
             scrManager.Initialize();
             scrManager.PlayScreen(States.ScreenState.GS_SPLASH_SCREEN);
-            
+          //  room = new Room();
         }
 
 
@@ -35,12 +37,14 @@ namespace GameProject.Core
         {
             mouse.Update(gameTime);
             scrManager.Update(gameTime);
+           // room.Update(gameTime);
         }
 
         public void Draw(GameTime gameTime)
         {
-            scrManager.currentScreen.Draw(gameTime);
+            scrManager.currentScreen.Draw(gameTime);          
             mouse.Draw(gameTime, this.spriteBatch);
+           // room.Draw(gameTime);
         }
     }
 }

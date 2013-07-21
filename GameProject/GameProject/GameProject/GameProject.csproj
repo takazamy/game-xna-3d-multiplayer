@@ -127,6 +127,7 @@
     <Compile Include="GameLogic\GameLogic.cs" />
     <Compile Include="GameLogic\GameRules.cs" />
     <Compile Include="GameLogic\Player.cs" />
+    <Compile Include="GameLogic\Room.cs" />
     <Compile Include="GameLogic\Turret.cs" />
     <Compile Include="Network\Client.cs" />
     <Compile Include="Network\IHandler.cs" />
