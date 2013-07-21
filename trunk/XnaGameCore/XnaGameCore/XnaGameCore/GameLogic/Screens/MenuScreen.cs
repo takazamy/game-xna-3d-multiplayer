@@ -74,7 +74,33 @@ namespace XnaGameCore.GameLogic.Screens
         public override void Update(GameTime gameTime)
         {
             // TODO: Add your update code here
-
+            if (enable)
+            {
+                if (playBtn != null)
+                {
+                    playBtn.Update(gameTime);
+                }
+                if (ExitBtn != null)
+                {
+                    ExitBtn.Update(gameTime);
+                }
+                if (HelpBtn != null)
+                {
+                    HelpBtn.Update(gameTime);
+                }
+                if (LanBtn != null)
+                {
+                    LanBtn.Update(gameTime);
+                }
+                if (HostBtn != null)
+                {
+                    HostBtn.Update(gameTime);
+                }
+                if (CreditBtn != null)
+                {
+                    CreditBtn.Update(gameTime);
+                }
+            }
            
         }
 
@@ -106,6 +132,7 @@ namespace XnaGameCore.GameLogic.Screens
             {
                CreditBtn.Draw(gameTime, this.spriteBatch);
             }
+            this.enable = true;
         }
     }
 }

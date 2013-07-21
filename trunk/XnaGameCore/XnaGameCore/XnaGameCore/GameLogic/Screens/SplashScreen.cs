@@ -50,18 +50,25 @@ namespace XnaGameCore.GameLogic.Screens
         public override void Update(GameTime gameTime)
         {
             // TODO: Add your update code here
-            MouseState mouseState = Mouse.GetState();
-            if(mouseState.LeftButton == ButtonState.Pressed)   
+            if (enable)
             {
-                scrManager.PlayScreen(States.ScreenState.GS_MENU); 
+                MouseState mouseState = Mouse.GetState();
+                if (mouseState.LeftButton == ButtonState.Pressed)
+                {
+                    scrManager.PlayScreen(States.ScreenState.GS_MENU);
+                }
             }
+           
            
             
         }
 
         public override void Draw(GameTime gameTime)
-        {           
-            spriteBatch.Draw(backGround, Vector2.Zero, Color.White);           
+        {
+           
+            spriteBatch.Draw(backGround, Vector2.Zero, Color.White);
+            enable = true;
+                   
         }
 
     }

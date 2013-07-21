@@ -65,8 +65,19 @@ namespace XnaGameCore.GameLogic.Screens
 
         public void PlayScreen(States.ScreenState key)
         {
-            currentScreen = screenList[key];
+            if (currentScreen != null)
+            {
+                currentScreen.enable = false;
+            }
+           
+            currentScreen = screenList[key];            
             state = key;       
+        }
+
+        public Screens GetScreensByState(States.ScreenState key)
+        {
+            Screens screen = screenList[key];
+            return screen;
         }
         
     }
