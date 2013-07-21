@@ -23,5 +23,13 @@ namespace GameServer
             mesg[GameKeys.ROOMID] = clt.refRoom.roomId;
             clt.send(mesg.ToString());
         }
+
+        public static void sendJoinRoom(Client clt, bool success)
+        {
+            JObject mesg = new JObject();
+            mesg[GameCommand.COMMAND] = GameCommand.CREATE_GAME;
+            mesg[GameKeys.SUCCESS] = success;
+            clt.send(mesg.ToString());
+        }
     }
 }

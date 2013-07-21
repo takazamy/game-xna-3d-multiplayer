@@ -34,7 +34,7 @@ namespace GameServer
         {
             handlerList.Add(GameCommand.CREATE_GAME, new CreateGameHandler(this));
             handlerList.Add(GameCommand.GET_LIST_ROOM,new GetListRoomHandler(this));
-
+            handlerList.Add(GameCommand.JOIN_ROOM, new JoinRoomHandler(this));
         }
         #region Wait for data
 

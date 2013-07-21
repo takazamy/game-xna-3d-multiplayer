@@ -61,6 +61,7 @@
     <Compile Include="Handler\CreateGameHandler.cs" />
     <Compile Include="Handler\GetListRoomHandler.cs" />
     <Compile Include="Handler\IHandler.cs" />
+    <Compile Include="Handler\JoinRoomHandler.cs" />
     <Compile Include="Participant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room.cs" />

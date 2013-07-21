@@ -9,9 +9,9 @@ namespace GameServer
     {
         public int roomId = 0;
         public Dictionary<int, Client> clientList;
-        private int totalPlayer = 0;
+        public int totalPlayer = 0;
         
-        public int maxPlayer;
+        public int maxPlayer = 2;
         public Room(int id)
         {
             roomId = id;
