@@ -30,7 +30,6 @@ namespace GameProject.Core
         BillboardSystem trees;
         Effect modelEffect, mapEffect;
         GameManager gameManager;
-        CustomModel model;
 
         public MainGame(ScreenManager scrManager, Game game, SpriteBatch spriteBatch,GameManager gameManager)
             : base(scrManager, game, spriteBatch)
@@ -51,12 +50,11 @@ namespace GameProject.Core
         {
             modelEffect = game.Content.Load<Effect>("Effect/LightingEffect");
             mapEffect = game.Content.Load<Effect>("Effect/MapEffect");
-            camera = new CameraComponent(game, new Vector3(0, 0, -10), new Vector3(0, 0, 0), new Vector3(0, 1, 0),gameManager.mouse);
+            camera = new CameraComponent(game, new Vector3(128, 8, 128), new Vector3(128, 8, 138), new Vector3(0, 1, 0),gameManager.mouse);
             map = new LoadMap("../../../Map/map1.bmp", "Texture/grass", game);
-            turret = new Turret("Model/turret", modelEffect, new Vector3(0, 0, 0), camera, game);
+            turret = new Turret("Model/turret", modelEffect, new Vector3(128, 0, 128), camera, game);
             skyBox = new Skybox("Model/cube", "Effect/Skybox", "Texture/Islands", game.Content);
 
-            model = new CustomModel("tea", modelEffect, new Vector3(5, 0, 0), game);
 
             Texture2D treeTexture = game.Content.Load<Texture2D>("Texture/tree_billboard");
             Vector3[] treePosition = new Vector3[2];
@@ -77,6 +75,7 @@ namespace GameProject.Core
                 camera.Update(gameTime);
                 turret.Update(camera.upDownRotation, camera.leftRightRotation);
                // turret.Update(0f, 0f);
+                
             }
         }
 
@@ -90,9 +89,8 @@ namespace GameProject.Core
 
             map.DrawMap(mapEffect, "AddTexture", camera.view, camera.projection, Matrix.Identity);
             turret.DrawModel("Lighting", 0.1f, camera);
-         //   skyBox.Draw(camera.view, camera.projection, camera.cameraPosition);
-        //    trees.Draw(camera.view,camera.projection,camera.cameraUp,Vector3.Cross(camera.cameraUp,camera.cameraDirection));
-            model.DrawModel("Lighting", 0.1f, camera);
+            skyBox.Draw(camera.view, camera.projection, camera.cameraPosition);
+            trees.Draw(camera.view,camera.projection,camera.cameraUp,Vector3.Cross(camera.cameraUp,camera.cameraDirection));
             base.Draw(gameTime);
             this.enable = true;
         }
