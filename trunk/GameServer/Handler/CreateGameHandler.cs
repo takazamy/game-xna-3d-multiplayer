@@ -14,7 +14,7 @@ namespace GameServer.Handler
 
         public override void Handler(JObject data)
         {
-            Room room = new Room(ServerManager.rId++);
+            Room room = new Room(++ServerManager.rId);
             room.Add(this.client);
             this.client.refRoom = room;
             ServerManager.roomList.Add(room.roomId,room);

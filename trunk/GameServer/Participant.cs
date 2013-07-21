@@ -23,5 +23,6 @@ namespace GameServer
         {
             hp = 100;
         }
+
     }
 }
