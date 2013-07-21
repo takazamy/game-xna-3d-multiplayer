@@ -22,6 +22,8 @@ namespace GameProject
         ModelBone turretLeftBone, turretRightBone, turretCenterBone, turretBaseBone;
         Matrix leftTransform, rightTransform, centerTransform, baseTransform;
         Bullet turretBullet;
+        Vector3 bulletLeftOffset = new Vector3(2.8f,-2.7f,11.5f);
+        Vector3 bulletRightOffset = new Vector3(-2.8f, -2.7f, 11.5f);
 
         public Turret(string assetName, Effect effect, Vector3 position,CameraComponent camera, Game game)
             : base ( assetName, effect, position, game)
@@ -29,13 +31,24 @@ namespace GameProject
             this.game = game;
             this.camera = camera;
 
-          //  this.turretBullet = new Bullet(game.GraphicsDevice,game.
+            Vector3[] bulletPosition = new Vector3[1];
+            for (int i = 0; i < bulletPosition.Length; i++ )
+            {
+                bulletPosition[i] = camera.cameraPosition + bulletRightOffset;
+            }
+            Texture2D bulletTexture = game.Content.Load<Texture2D>("Texture/bullet");
+            this.turretBullet = new Bullet(game.GraphicsDevice, game.Content, bulletTexture, new Vector2(1), bulletPosition);
         }
 
         public void Update(float xRotate, float yRotate)
         {
-            this.zRotation += xRotate;
-            this.yRotation += yRotate;
+
+            turretBullet.Update(camera.cameraDirection);
+
+
+            
+            //this.zRotation += xRotate;
+            //this.yRotation += yRotate;
             //yRotation = MathHelper.PiOver2;
 
             KeyboardState key = Keyboard.GetState();
@@ -69,8 +82,7 @@ namespace GameProject
         public override void DrawModel(string technique, float scaleRate, CameraComponent camera)
         {
           //  model.Root.Transform = camera.world;
-
-
+            turretBullet.Draw(camera.view, camera.projection, camera.cameraUp, Vector3.Cross(camera.cameraUp, camera.cameraDirection));
             //left right Rotation
             Matrix modelWorld = Matrix.CreateScale(scaleRate)
             * Matrix.CreateFromYawPitchRoll(MathHelper.PiOver2 + yRotation, xRotation, zRotation)
@@ -81,7 +93,7 @@ namespace GameProject
             * Matrix.CreateTranslation(position);
             // base rotation
             Matrix modelWorld2 = Matrix.CreateScale(scaleRate)
-            * Matrix.CreateFromYawPitchRoll(MathHelper.PiOver2 , 0f, 0f)
+            * Matrix.CreateFromYawPitchRoll(MathHelper.PiOver2, 0f, 0f)
             * Matrix.CreateTranslation(position);
 
             int i = 0;
@@ -116,6 +128,8 @@ namespace GameProject
                 }
                 mesh.Draw();
             }
+
+
             //base.DrawModel(technique, scaleRate, camera);
         }
 
