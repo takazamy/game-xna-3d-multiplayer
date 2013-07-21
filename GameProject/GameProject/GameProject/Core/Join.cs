@@ -43,7 +43,7 @@ namespace GameProject.Core
             : base(scrManager, game, spriteBatch)
         {
             gameManager = manager;            
-
+            
             Initialize();
         }
 

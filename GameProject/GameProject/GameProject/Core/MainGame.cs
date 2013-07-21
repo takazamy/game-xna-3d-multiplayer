@@ -57,18 +57,24 @@ namespace GameProject.Core
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public override void Update(GameTime gameTime)
         {
+            if (enable)
+            {
+                camera.Update(gameTime);
+            }
            // turret.Update(gameTime);
-            camera.Update(gameTime);
+            
         }
 
         public override void Draw(GameTime gameTime)
         {
+            
             RasterizerState rs = new RasterizerState();
             rs.CullMode = CullMode.None;
             rs.FillMode = FillMode.Solid;
             game.GraphicsDevice.RasterizerState = rs;
             map.DrawMap(mapEffect, "AddTexture", camera.view, camera.projection, Matrix.Identity);
             //turret.Draw(gameTime);
+            this.enable = true;
         }
     }
 }
