@@ -34,7 +34,7 @@ namespace XnaGameCore
             this.texture = texture;
             this.numBillboards = billboardsPosition.Length;
 
-            this.effect = content.Load<Effect>("BillboardEffect");
+            this.effect = content.Load<Effect>("Effect/BillboardEffect");
 
             GeneratePactices(billboardsPosition);
         }
