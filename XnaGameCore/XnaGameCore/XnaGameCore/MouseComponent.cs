@@ -19,7 +19,7 @@ namespace XnaGameCore
     {
       
         private Texture2D mouseImage;
-        private Vector2 location = Vector2.Zero;
+        public Vector2 location = Vector2.Zero;
         private string name;
         private Game game;
         public MouseComponent(Game game,String name)           
