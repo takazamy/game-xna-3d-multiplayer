@@ -15,5 +15,12 @@ namespace GameProject.Network
             mesg[GameCommand.COMMAND] = GameCommand.CREATE_GAME;
             clt.send(mesg.ToString());
         }
+
+        public static void SendGetListRoom(Client clt)
+        {
+            JObject mesg = new JObject();
+            mesg[GameCommand.COMMAND] = GameCommand.GET_LIST_ROOM;
+            clt.send(mesg.ToString());
+        }
     }
 }

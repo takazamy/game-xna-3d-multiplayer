@@ -17,17 +17,19 @@ namespace GameProject.Network
         private Dictionary<string,IHandler> handlerList;
         public Participant parentParticipant;
         public int roomId;
-        public Client(Game game)
+        public Client(Game game, ScreenGameManager scrManager)
             : base(game)
-        {           
+        {
+            this.scrManager = scrManager;
             handlerList = new Dictionary<string, IHandler>();
             initHandler();
         }
 
         public void initHandler()
         {
-            handlerList.Add(GameCommand.CONNECT, new ReceiveConnectHandler(this));
+            handlerList.Add(GameCommand.CONNECT, new ReceiveConnectHandler(this, scrManager));
             handlerList.Add(GameCommand.CREATE_GAME, new ReceiveCreateGameHandler(this));
+            handlerList.Add(GameCommand.GET_LIST_ROOM, new ReceiveGetListRoomHandler(this, scrManager));
         }
         protected override void OnDataReceived(string data, SocketPacket packet)
         {
@@ -36,6 +38,7 @@ namespace GameProject.Network
             JObject dataReceive = JObject.Parse(data);
             
             IHandler handler = handlerList[(string)dataReceive[GameCommand.COMMAND]];
+            
             handler.Handler(dataReceive);
         }
 
@@ -43,7 +46,7 @@ namespace GameProject.Network
         {
             Console.WriteLine("Connected");
             //Tạo game
-            scrManager.PlayScreen(States.ScreenState.GS_HOST);
+            
             base.OnConnected(server);
         }
 
