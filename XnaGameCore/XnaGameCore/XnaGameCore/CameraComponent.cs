@@ -24,30 +24,30 @@ namespace XnaGameCore
         public Vector3 cameraDirection;
         public Vector3 cameraUp;
         Vector3 cameraTarget;
+        MouseState preMouseState;
+        public Quaternion mouseQuaternion = Quaternion.Identity;
+        public Quaternion mouseRotate;
         Game game;
         int mouseSpeed = 100; // lower is faster
         public float leftRightRotation = 0;
         public float upDownRotation = 0;
-        MouseComponent mouse;
-        Vector2 preMouseLocation;
         bool isFirstTime = true;
 
         public CameraComponent(Game game, Vector3 position, Vector3 target, Vector3 up,MouseComponent mouse)
         {
             this.game = game;
-            this.mouse = mouse;
             cameraPosition = position;
             cameraTarget = target;
             cameraDirection = target - position;
             cameraUp = up;
-            
+            CreatLookAt();
+
+
             projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4,
                 (float)game.Window.ClientBounds.Width /
                 (float)game.Window.ClientBounds.Height,
                 2, 2000);
-
-            CreatLookAt();
-
+        
         }
         private void CreatLookAt()
         {
@@ -56,12 +56,9 @@ namespace XnaGameCore
         }
         private void Init()
         {
-            Mouse.SetPosition(683, 384);
-            mouse.location = new Vector2( game.Window.ClientBounds.Width / 2,
-               game.Window.ClientBounds.Height / 2);
-
-          //  mouse.location = new Vector2(683, 384);
-            preMouseLocation = mouse.location;
+            Mouse.SetPosition(game.Window.ClientBounds.Width / 2,
+                game.Window.ClientBounds.Height / 2);
+            preMouseState = Mouse.GetState();
         }
         public void Update(GameTime gameTime)
         {
@@ -78,12 +75,13 @@ namespace XnaGameCore
         }
         private void MouseLook()
         {
-            Vector2 currentMouseLoacation = mouse.location;
-            Console.WriteLine("current: {0}",currentMouseLoacation);
-            Console.WriteLine("pre: {0}", preMouseLocation);
-            leftRightRotation = (-MathHelper.PiOver4 / mouseSpeed) * (currentMouseLoacation.X - preMouseLocation.X);
-            upDownRotation = (MathHelper.PiOver4 / mouseSpeed) * (currentMouseLoacation.Y - preMouseLocation.Y);
-            preMouseLocation = mouse.location;
+
+
+            MouseState currentState = Mouse.GetState();
+            leftRightRotation = (-MathHelper.PiOver4 / mouseSpeed) * (currentState.X - preMouseState.X);
+            upDownRotation = (MathHelper.PiOver4 / mouseSpeed) * (currentState.Y - preMouseState.Y);
+            preMouseState = Mouse.GetState();
+
 
             cameraDirection = Vector3.Transform(cameraDirection, Matrix.CreateFromAxisAngle(cameraUp, leftRightRotation));
             cameraDirection = Vector3.Transform(cameraDirection, Matrix.CreateFromAxisAngle(Vector3.Cross(cameraUp, cameraDirection), upDownRotation));
@@ -112,6 +110,8 @@ namespace XnaGameCore
 
                 cameraPosition -= Vector3.Cross(cameraUp, cameraDirection);
             }
+
+
         }
     }
 }
