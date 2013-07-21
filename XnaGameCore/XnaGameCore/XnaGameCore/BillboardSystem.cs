@@ -25,12 +25,14 @@ namespace XnaGameCore
         public bool ensureOcclusion = true;
         public enum BillboardMode { Cylindrical, Spherical };
         public BillboardMode mode = BillboardMode.Spherical;
+        public Vector3[] billboardPosition;
 
         public BillboardSystem(GraphicsDevice graphicDevice, ContentManager content,
             Texture2D texture, Vector2 billboardSize, Vector3[] billboardsPosition)
         {
             this.graphicDevice = graphicDevice;
             this.billboardSize = billboardSize;
+            this.billboardPosition = billboardsPosition;
             this.texture = texture;
             this.numBillboards = billboardsPosition.Length;
 
@@ -39,7 +41,7 @@ namespace XnaGameCore
             GeneratePactices(billboardsPosition);
         }
 
-        private void GeneratePactices(Vector3[] billboardPosition)
+        protected void GeneratePactices(Vector3[] billboardPosition)
         {
             vertices = new VertexPositionTexture[numBillboards * 4];
             indices = new short[numBillboards * 6];
