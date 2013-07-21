@@ -19,18 +19,29 @@ namespace XnaGameCore
     {
         public Matrix view;
         public Matrix projection;
+        public Matrix world = Matrix.Identity;
         public Vector3 cameraPosition;
-        Vector3 cameraDirection;
+        public Vector3 cameraDirection;
+        public Vector3 cameraDirection2;
         Vector3 cameraUp;
-        public MouseState preMouseState;
+        Vector3 cameraTarget;
+        MouseState preMouseState;
+        public Quaternion mouseQuaternion = Quaternion.Identity;
+        public Quaternion mouseRotate;
         Game game;
+        int mouseSpeed = 100; // lower is faster
+        public float leftRightRotation = 0;
+        public float upDownRotation = 0;
 
         public CameraComponent(Game game, Vector3 position, Vector3 target, Vector3 up)
         {
             this.game = game;
             cameraPosition = position;
+            cameraTarget = target;
             cameraDirection = target - position;
+
             cameraDirection.Normalize();
+            cameraDirection2 = cameraDirection;
             cameraUp = up;
             CreatLookAt();
 
@@ -38,17 +49,17 @@ namespace XnaGameCore
             projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4,
                 (float)game.Window.ClientBounds.Width /
                 (float)game.Window.ClientBounds.Height,
-                2, 200);
+                2, 2000);
 
             Init();
 
         }
-        public void CreatLookAt()
+        private void CreatLookAt()
         {
-            
+
             view = Matrix.CreateLookAt(cameraPosition, cameraPosition + cameraDirection, cameraUp);
         }
-        public void Init()
+        private void Init()
         {
             Mouse.SetPosition(game.Window.ClientBounds.Width / 2,
                 game.Window.ClientBounds.Height / 2);
@@ -56,23 +67,55 @@ namespace XnaGameCore
         }
         public void Update(GameTime gameTime)
         {
+            this.MouseLook();
+            this.CameraMove();
+        }
+        private void MouseLook()
+        {
 
-            cameraDirection = Vector3.Transform(cameraDirection, Matrix.CreateFromAxisAngle(cameraUp,
-                (-MathHelper.PiOver4 / 150) * (Mouse.GetState().X - preMouseState.X)));
 
-            cameraDirection = Vector3.Transform(cameraDirection, Matrix.CreateFromAxisAngle(
-                Vector3.Cross(cameraUp, cameraDirection),
-                (MathHelper.PiOver4 / 100) * (Mouse.GetState().Y - preMouseState.Y)));
-
-            //cameraUp = Vector3.Transform(cameraDirection, Matrix.CreateFromAxisAngle(
-            //    Vector3.Cross(cameraUp, cameraDirection),
-            //    (MathHelper.PiOver4 / 100) * (Mouse.GetState().Y - preMouseState.Y)));
-            
+            MouseState currentState = Mouse.GetState();
+            leftRightRotation = (-MathHelper.PiOver4 / mouseSpeed) * (currentState.X - preMouseState.X);
+            upDownRotation = (MathHelper.PiOver4 / mouseSpeed) * (currentState.Y - preMouseState.Y);
             preMouseState = Mouse.GetState();
 
-            
+            mouseRotate = Quaternion.CreateFromAxisAngle(cameraUp, leftRightRotation);
+            mouseRotate = mouseRotate * Quaternion.CreateFromAxisAngle(Vector3.Cross(cameraUp, cameraDirection2), upDownRotation);
+            mouseQuaternion *= mouseRotate;
+
+            cameraDirection2 = Vector3.Transform(cameraDirection2, Matrix.CreateFromQuaternion(mouseRotate));
+            cameraDirection2 = Vector3.Normalize(cameraDirection2);
+            //    cameraUp = Vector3.Transform(cameraUp,Matrix.CreateFromQuaternion(mouseRotate));
+
+            cameraDirection = Vector3.Transform(cameraDirection, Matrix.CreateFromAxisAngle(cameraUp, leftRightRotation));
+            cameraDirection = Vector3.Transform(cameraDirection, Matrix.CreateFromAxisAngle(Vector3.Cross(cameraUp, cameraDirection), upDownRotation));
+            cameraDirection = Vector3.Normalize(cameraDirection);
 
             CreatLookAt();
-    }
+        }
+        private void CameraMove()
+        {
+            KeyboardState key = Keyboard.GetState();
+            if (key.IsKeyDown(Keys.W))
+            {
+                cameraPosition += cameraDirection;
+            }
+            else if (key.IsKeyDown(Keys.S))
+            {
+                cameraPosition -= cameraDirection;
+            }
+
+            if (key.IsKeyDown(Keys.A))
+            {
+                cameraPosition += Vector3.Cross(cameraUp, cameraDirection);
+            }
+            else if (key.IsKeyDown(Keys.D))
+            {
+
+                cameraPosition -= Vector3.Cross(cameraUp, cameraDirection);
+            }
+
+
+        }
     }
 }

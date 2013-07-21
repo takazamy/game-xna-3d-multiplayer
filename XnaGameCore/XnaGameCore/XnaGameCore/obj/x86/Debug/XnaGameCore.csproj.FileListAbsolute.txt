@@ -9,3 +9,9 @@ E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\XnaGameCore\Xna
 E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\XnaGameCore\XnaGameCore\XnaGameCore\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\XnaGameCore\XnaGameCore\XnaGameCore\obj\x86\Debug\XnaGameCore.dll
 E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\XnaGameCore\XnaGameCore\XnaGameCore\obj\x86\Debug\XnaGameCore.pdb
+C:\Users\thelan\Desktop\game-xna-3d-multiplayer\XnaGameCore\XnaGameCore\XnaGameCore\bin\x86\Debug\XnaGameCore.dll
+C:\Users\thelan\Desktop\game-xna-3d-multiplayer\XnaGameCore\XnaGameCore\XnaGameCore\bin\x86\Debug\XnaGameCore.pdb
+C:\Users\thelan\Desktop\game-xna-3d-multiplayer\XnaGameCore\XnaGameCore\XnaGameCore\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\thelan\Desktop\game-xna-3d-multiplayer\XnaGameCore\XnaGameCore\XnaGameCore\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\thelan\Desktop\game-xna-3d-multiplayer\XnaGameCore\XnaGameCore\XnaGameCore\obj\x86\Debug\XnaGameCore.dll
+C:\Users\thelan\Desktop\game-xna-3d-multiplayer\XnaGameCore\XnaGameCore\XnaGameCore\obj\x86\Debug\XnaGameCore.pdb

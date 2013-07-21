@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\SplashScreen.xnb</Output>
-      <Time>2013-06-22T20:11:26.0684221+07:00</Time>
+      <Output>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\SplashScreen.xnb</Output>
+      <Time>2013-07-09T18:56:06.8738091+07:00</Time>
     </Item>
     <Item>
       <Source>mouse.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\mouse.xnb</Output>
-      <Time>2013-06-22T20:40:38.0906281+07:00</Time>
+      <Output>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\mouse.xnb</Output>
+      <Time>2013-07-09T18:56:06.8738091+07:00</Time>
     </Item>
     <Item>
       <Source>menuscreen.jpg</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\menuscreen.xnb</Output>
-      <Time>2013-06-24T21:06:18.95293+07:00</Time>
+      <Output>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\menuscreen.xnb</Output>
+      <Time>2013-07-09T18:56:05.4074066+07:00</Time>
     </Item>
     <Item>
       <Source>buttonImg.jpg</Source>
@@ -37,8 +37,8 @@
         <Data Key="ColorKeyColor">255, 255, 255, 255</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\buttonImg.xnb</Output>
-      <Time>2013-06-25T22:12:08.1815217+07:00</Time>
+      <Output>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\buttonImg.xnb</Output>
+      <Time>2013-07-09T18:56:05.4386066+07:00</Time>
     </Item>
     <Item>
       <Source>Arial.spritefont</Source>
@@ -46,8 +46,129 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Arial.xnb</Output>
-      <Time>2013-06-25T22:23:49.5890242+07:00</Time>
+      <Output>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Arial.xnb</Output>
+      <Time>2013-07-09T18:56:05.4230066+07:00</Time>
+    </Item>
+    <Item>
+      <Source>hostImg.jpg</Source>
+      <Name>hostImg</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\hostImg.xnb</Output>
+      <Time>2013-07-09T18:56:06.795809+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Texture\Bullet.png</Source>
+      <Name>Texture\Bullet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Texture\Bullet.xnb</Output>
+      <Time>2013-07-21T09:56:38.242493+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Texture\grass.bmp</Source>
+      <Name>Texture\grass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Texture\grass.xnb</Output>
+      <Time>2013-07-21T09:56:38.3204931+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Texture\tree_billboard.png</Source>
+      <Name>Texture\tree_billboard</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Texture\tree_billboard.xnb</Output>
+      <Time>2013-07-21T09:56:38.4140933+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Texture\Islands.dds</Source>
+      <Name>Texture\Islands</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Texture\Islands.xnb</Output>
+      <Time>2013-07-21T09:56:38.3828932+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Effect\MapEffect.fx</Source>
+      <Name>Effect\MapEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Effect\MapEffect.xnb</Output>
+      <Time>2013-07-09T19:46:01.8433264+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Effect\LightingEffect.fx</Source>
+      <Name>Effect\LightingEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Effect\LightingEffect.xnb</Output>
+      <Time>2013-07-09T19:44:43.0818215+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Effect\BillboardEffect.fx</Source>
+      <Name>Effect\BillboardEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Effect\BillboardEffect.xnb</Output>
+      <Time>2013-07-21T09:56:11.317031+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Effect\Skybox.fx</Source>
+      <Name>Effect\Skybox</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Effect\Skybox.xnb</Output>
+      <Time>2013-07-21T09:56:53.8893205+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Model\Turret.FBX</Source>
+      <Name>Model\Turret</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Model\Turret.xnb</Output>
+      <Time>2013-07-09T19:48:20.6122635+07:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Model\Turret_0.xml</Key>
+        <Value>2013-07-21T10:03:46.7727177+07:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Model\cube.fbx</Source>
+      <Name>Model\cube</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\Model\cube.xnb</Output>
+      <Time>2013-07-21T09:56:43.5465023+07:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Model\cube_0.xml</Key>
+        <Value>2013-07-21T10:03:46.944318+07:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Model\Turret.FBX</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Model\Turret_0.xml</Output>
+      <Time>2013-07-09T19:48:20.6122635+07:00</Time>
+    </Item>
+    <Item>
+      <Source>Model\cube.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Model\cube_0.xml</Output>
+      <Time>2013-07-21T09:56:43.5465023+07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -55,10 +176,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProjectContent\</RootDirectory>
-      <LoggerRootDirectory>E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\</LoggerRootDirectory>
-      <IntermediateDirectory>E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProjectContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>E:\HocTap\DX3D\Game3DMultiplayer-Project\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProjectContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProjectContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\thelan\Desktop\game-xna-3d-multiplayer\GameProject\GameProject\GameProject\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -87,7 +208,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2013-03-20T01:01:20.4065644+07:00</Value>
+        <Value>2013-01-01T11:40:13.1690958+07:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

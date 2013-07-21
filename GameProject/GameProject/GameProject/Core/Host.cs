@@ -57,6 +57,8 @@ namespace GameProject.Core
 
         private void createButtonHandler()
         {
+            
+
             //Send Yêu Cầu Tạo Game lên Server.
             RequestHandler.SendCreateGame(this.client);
         }
