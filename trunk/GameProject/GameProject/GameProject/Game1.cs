@@ -25,7 +25,7 @@ namespace GameProject
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         
-        public MouseComponent mouse;
+        
         public AsyncTcpServer server;
 
         public GameManager gameManager;
@@ -64,7 +64,7 @@ namespace GameProject
 
             gameManager = new GameManager(this, this.spriteBatch);
 
-            mouse = new MouseComponent(this, "mouse");
+           
             server = new AsyncTcpServer(this);
             
             this.Components.Add(server);    
@@ -92,7 +92,7 @@ namespace GameProject
                 this.Exit();
 
             // TODO: Add your update logic here
-            mouse.Update(gameTime);
+          
             gameManager.Update(gameTime);
             
             base.Update(gameTime);
@@ -112,7 +112,8 @@ namespace GameProject
             this.spriteBatch.Begin();
             // TODO: Add your drawing code here
             gameManager.Draw(gameTime);
-            mouse.Draw(gameTime, this.spriteBatch);
+            
+            
             this.spriteBatch.End();
             base.Draw(gameTime);
         }
