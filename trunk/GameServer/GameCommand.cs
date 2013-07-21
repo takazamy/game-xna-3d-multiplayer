@@ -7,10 +7,11 @@ namespace GameServer
 {
     public static class GameCommand
     {
-        public static string COMMAND = "cmd";
+        public const string COMMAND = "cmd";
         //game logic keys
-        public static string CONNECT = "connect";
-        public static string CREATE_GAME = "create";
-        public static string GET_LIST_ROOM = "getlistroom";
+        public const string CONNECT = "connect";
+        public const string CREATE_GAME = "create";
+        public const string GET_LIST_ROOM = "getlistroom";
+        public const string JOIN_ROOM = "join";
     }
 }

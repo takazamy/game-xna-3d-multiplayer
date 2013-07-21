@@ -8,10 +8,12 @@ namespace GameServer
     public static class GameKeys
     {
         //game properties keys
-        public static string ID = "id";
-        public static string ROOMID = "roomid";
-        public static string NUMBER_USERS = "numberusers";
-        public static string MAX = "max";
-        public static string ROOM_LIST = "roomlist";
+        public const string ID = "id";
+        public const string ROOMID = "roomid";
+        public const string NUMBER_USERS = "numberusers";
+        public const string MAX = "max";
+        public const string ROOM_LIST = "roomlist";
+        public const string SUCCESS = "success";
+
     }
 }
