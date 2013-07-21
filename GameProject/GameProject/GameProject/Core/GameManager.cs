@@ -19,10 +19,11 @@ namespace GameProject.Core
 
         public GameManager(Game game, SpriteBatch spriteBatch)
         {
-            client = new Client(game);
+            
             scrManager = new ScreenGameManager(game, spriteBatch, this);
-            client.scrManager = scrManager;
-
+            
+            client = new Client(game, scrManager);
+            scrManager.Initialize();
             scrManager.PlayScreen(States.ScreenState.GS_SPLASH_SCREEN);
             
         }

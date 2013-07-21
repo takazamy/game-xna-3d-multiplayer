@@ -46,7 +46,8 @@ namespace GameProject.Core
 
         private void joinButtonHandler()
         {
-            
+            scrManager.PlayScreen(States.ScreenState.GS_JOIN);
+            RequestHandler.SendGetListRoom(this.client);
         }
 
         private void backButtonHandler()

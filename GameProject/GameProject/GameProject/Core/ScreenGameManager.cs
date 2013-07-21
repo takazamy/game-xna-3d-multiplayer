@@ -15,7 +15,7 @@ namespace GameProject.Core
             : base(game, spriteBatch)
         {
             gameManager = manager;
-            Initialize();
+            
         }
 
         public override void Initialize()
@@ -23,7 +23,9 @@ namespace GameProject.Core
             this.Append(States.ScreenState.GS_SPLASH_SCREEN, new Splash(this, this.game, this.spriteBatch, gameManager));
             this.Append(States.ScreenState.GS_MENU, new Menu(this, this.game, this.spriteBatch, gameManager));
             this.Append(States.ScreenState.GS_HOST, new Host(this, this.game, this.spriteBatch, gameManager));
+            this.Append(States.ScreenState.GS_JOIN, new Join(this, this.game, this.spriteBatch, gameManager));
             base.Initialize();
         }
+
     }
 }
