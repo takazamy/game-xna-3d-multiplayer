@@ -32,9 +32,8 @@ namespace GameProject
           //  this.turretBullet = new Bullet(game.GraphicsDevice,game.
         }
 
-        public void Update(Quaternion rotateQuaternion,float xRotate, float yRotate)
+        public void Update(float xRotate, float yRotate)
         {
-            this.modelQuaternion = rotateQuaternion;
             this.zRotation += xRotate;
             this.yRotation += yRotate;
             //yRotation = MathHelper.PiOver2;
