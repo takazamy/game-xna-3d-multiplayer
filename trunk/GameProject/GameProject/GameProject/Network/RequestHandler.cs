@@ -26,7 +26,10 @@ namespace GameProject.Network
 
         public static void SendJoinRoom(Client clt, int roomId)
         {
-
+            JObject mesg = new JObject();
+            mesg[GameCommand.COMMAND] = GameCommand.JOIN_ROOM;
+            mesg[GameKeys.ROOMID] = roomId;
+            clt.send(mesg.ToString());
         }
     }
 }
