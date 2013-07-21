@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json.Linq;
-using GameProject.GameLogic;
 using GameProject.Core;
+using XnaGameCore.GameLogic.Screens;
 using XnaGameCore.GameLogic.State;
+using GameProject.GameLogic;
 namespace GameProject.Network
 {
-    public class ReceiveConnectHandler :IHandler
+    public class ReceiveGetListRoomHandler:IHandler
     {
         ScreenGameManager scrManager;
-        public ReceiveConnectHandler(Client clt, ScreenGameManager scrManager)
+        public ReceiveGetListRoomHandler(Client clt, ScreenGameManager scrManager)
             : base(clt)
         {
             this.scrManager = scrManager;
         }
 
-
         public override void Handler(JObject data)
         {
-            this.clt.parentParticipant = new Participant((int)data[GameKeys.ID]);
-            scrManager.PlayScreen(States.ScreenState.GS_HOST);
+            Join joinScreen = (Join)scrManager.GetScreensByState(States.ScreenState.GS_JOIN);
+            joinScreen.ListRoomData = (JArray)data[GameKeys.ROOM_LIST];
         }
     }
 }
