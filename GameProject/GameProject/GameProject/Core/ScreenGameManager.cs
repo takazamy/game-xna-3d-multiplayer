@@ -14,8 +14,7 @@ namespace GameProject.Core
         public ScreenGameManager(Game game, SpriteBatch spriteBatch, GameManager manager)
             : base(game, spriteBatch)
         {
-            gameManager = manager;
-            
+            gameManager = manager;           
         }
 
         public override void Initialize()
