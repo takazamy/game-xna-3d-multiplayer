@@ -20,5 +20,11 @@ namespace GameServer.Handler
             ServerManager.roomList.Add(room.roomId,room);
             GameRequest.sendCreateRoom(this.client);
         }
+
+        public override bool Valid(JObject data)
+        {
+            //Kiểm tra dữ liệu hợp lệ trước khi vào Handler
+            return true;
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace GameServer.Handler
             this.client = clt;
         }
 
+        public abstract bool Valid(JObject data);
         public abstract void Handler(JObject data);
     }
 }
