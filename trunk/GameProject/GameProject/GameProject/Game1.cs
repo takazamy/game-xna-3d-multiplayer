@@ -105,6 +105,10 @@ namespace GameProject
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            RasterizerState rs = new RasterizerState();
+            rs.CullMode = CullMode.None;
+            rs.FillMode = FillMode.Solid;
+            GraphicsDevice.RasterizerState = rs;
             this.spriteBatch.Begin();
             // TODO: Add your drawing code here
             gameManager.Draw(gameTime);
