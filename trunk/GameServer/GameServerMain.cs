@@ -392,12 +392,12 @@ namespace GameServer
                 if (newClt.ClientSocket.Connected)
                 {
                     String data = newClt.ClientSocket.RemoteEndPoint.ToString();
-                    String[] ip = data.Split(':');
-                    if (!ServerManager.CheckExistClient(ip[0]))
+                   
+                    if (!ServerManager.CheckExistClient(data))
                     {
                         return;
                     }
-                    ServerManager.ClientList.Add(ip[0], newClt);
+                    ServerManager.ClientList.Add(data, newClt);
                     AppendToRichEditControl("OnClientConnect : " + newClt.ClientSocket.RemoteEndPoint);
                     newClt.WaitForData();
                     GameRequest.sendConnected(newClt, newClt.parentParticipant.ClientId);
