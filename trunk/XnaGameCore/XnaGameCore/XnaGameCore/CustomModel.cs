@@ -17,7 +17,7 @@ namespace XnaGameCore
         Game game;
         protected List<Texture2D> modelTextures = new List<Texture2D>();
         protected Model model;
-        protected Vector3 position;
+        public Vector3 position;
         protected Matrix world = Matrix.Identity;
         protected float xRotation, yRotation, zRotation;
         protected Quaternion modelQuaternion = Quaternion.Identity;
@@ -27,14 +27,14 @@ namespace XnaGameCore
             this.game = game;
             this.model = this.game.Content.Load<Model>(assetName);
             this.position = position;
-            foreach (ModelMesh mesh in model.Meshes)
-            {
-                foreach (BasicEffect currentEffect in mesh.Effects)
-                {
-                    Texture2D tempTex = currentEffect.Texture;
-                    modelTextures.Add(tempTex);
-                }
-            }
+            //foreach (ModelMesh mesh in model.Meshes)
+            //{
+            //    foreach (BasicEffect currentEffect in mesh.Effects)
+            //    {
+            //        Texture2D tempTex = currentEffect.Texture;
+            //        modelTextures.Add(tempTex);
+            //    }
+            //}
 
             foreach (ModelMesh mesh in model.Meshes)
                 foreach (ModelMeshPart meshPart in mesh.MeshParts)
