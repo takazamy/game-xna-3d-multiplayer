@@ -68,7 +68,7 @@ namespace GameProject
         public void Draw(GameTime gameTime)
         {
             turret.DrawModel("Lighting", 0.1f, camera);
-            Console.WriteLine("ClientId:" + this.ClientId + "turret:" + turret.position);
+            //Console.WriteLine("ClientId:" + this.ClientId + "turret:" + turret.position);
         }
 
         internal void CreateCamera(int pos, Game game)
