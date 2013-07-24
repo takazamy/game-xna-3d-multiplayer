@@ -107,7 +107,9 @@ namespace XnaGameCore.GameLogic.Screens
         public override void Draw(GameTime gameTime)
         {
             //this.game.GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin();
             spriteBatch.Draw(backGround, Vector2.Zero, Color.White);
+            spriteBatch.End();
             if (playBtn != null)
             {
                 playBtn.Draw(gameTime, this.spriteBatch);

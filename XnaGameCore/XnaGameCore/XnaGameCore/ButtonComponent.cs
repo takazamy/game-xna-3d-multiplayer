@@ -152,7 +152,7 @@ namespace XnaGameCore
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
 
-            //spriteBatch.Begin();
+            spriteBatch.Begin();
             if (!isActive)
             {
                 spriteBatch.Draw(this.buttonImage, bound,
@@ -164,7 +164,7 @@ namespace XnaGameCore
                 spriteBatch.Draw(this.buttonImage, bound, currSourceRect, Color.White);
             }
             spriteBatch.DrawString(font, buttonText, textLocation, Color.Red);
-           // spriteBatch.End();           
+            spriteBatch.End();           
         }
 
         private Action onMouseDown = null;
