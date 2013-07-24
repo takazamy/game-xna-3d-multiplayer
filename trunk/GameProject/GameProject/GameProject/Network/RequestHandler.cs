@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json.Linq;
 using GameProject.GameLogic;
+using Microsoft.Xna.Framework;
 
 namespace GameProject.Network
 {
@@ -30,6 +31,10 @@ namespace GameProject.Network
             mesg[GameCommand.COMMAND] = GameCommand.JOIN_ROOM;
             mesg[GameKeys.ROOMID] = roomId;
             clt.send(mesg.ToString());
+        }
+
+        public static void SendUpdateCameraLook(Client clt, Vector3 rotateAngle)
+        {
         }
     }
 }

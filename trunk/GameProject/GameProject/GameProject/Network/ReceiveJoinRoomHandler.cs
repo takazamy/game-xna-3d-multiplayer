@@ -5,6 +5,7 @@ using System.Text;
 using Newtonsoft.Json.Linq;
 using GameProject.GameLogic;
 using XnaGameCore.GameLogic.State;
+using GameProject.Core;
 namespace GameProject.Network
 {
     public class ReceiveJoinRoomHandler:IHandler
@@ -22,6 +23,9 @@ namespace GameProject.Network
             bool success = (bool)data[GameKeys.SUCCESS];
             if (success)
             {
+                int idJoin = (int)data[GameKeys.ID];
+                MainGame game = (MainGame)clt.scrManager.GetScreensByState(States.ScreenState.GS_MAIN_GAME);
+                game.room.CreateParticipant(idJoin);
                 clt.scrManager.PlayScreen(States.ScreenState.GS_MAIN_GAME);
             }
             

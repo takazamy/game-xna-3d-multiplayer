@@ -15,6 +15,7 @@ namespace GameProject.GameLogic
         public const string ROOM_LIST = "roomlist";
         public const string SUCCESS = "success";
         public const string POSITION = "pos";
+        public const string INFO = "info";
         //public static const string 
     }
 }
