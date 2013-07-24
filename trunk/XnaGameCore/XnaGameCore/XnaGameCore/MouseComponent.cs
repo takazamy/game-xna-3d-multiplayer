@@ -58,8 +58,10 @@ namespace XnaGameCore
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
-        {           
-            spriteBatch.Draw(this.mouseImage, this.location, Color.White);           
+        {
+            spriteBatch.Begin();
+            spriteBatch.Draw(this.mouseImage, this.location, Color.White);
+            spriteBatch.End();
         }
     }
 }

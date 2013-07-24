@@ -46,7 +46,10 @@ namespace XnaGameCore.GameLogic.Screens
 
         public override void Draw(GameTime gameTime)
         {
+            spriteBatch.Begin();
             spriteBatch.Draw(backGround, Vector2.Zero, Color.White*0.5f);
+            spriteBatch.End();
+
             if (createButton != null)
             {
                 createButton.Draw(gameTime, spriteBatch);
@@ -60,6 +63,7 @@ namespace XnaGameCore.GameLogic.Screens
                 joinButton.Draw(gameTime, spriteBatch);
             }
             this.enable = true;
+
         }
 
         protected override void LoadContent()

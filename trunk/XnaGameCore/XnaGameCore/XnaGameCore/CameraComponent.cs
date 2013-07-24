@@ -46,7 +46,7 @@ namespace XnaGameCore
             projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4,400/300,
                 //(float)game.Window.ClientBounds.Width /
                // (float)game.Window.ClientBounds.Height,
-                2, 2000);
+                1, 2000);
         
         }
         private void CreatLookAt()

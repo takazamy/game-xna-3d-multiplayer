@@ -65,8 +65,10 @@ namespace XnaGameCore.GameLogic.Screens
 
         public override void Draw(GameTime gameTime)
         {
+            spriteBatch.Begin();
            
             spriteBatch.Draw(backGround, Vector2.Zero, Color.White);
+            spriteBatch.End();
             enable = true;
                    
         }
