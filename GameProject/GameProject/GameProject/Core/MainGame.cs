@@ -32,7 +32,7 @@ namespace GameProject.Core
         GameManager gameManager;
 
         Vector3 turretPosition;
-
+        TargetBillboard target;
 
         public Room room;
         public MainGame(ScreenManager scrManager, Game game, SpriteBatch spriteBatch,GameManager gameManager)
@@ -54,6 +54,15 @@ namespace GameProject.Core
 
         protected override void LoadContent()
         {
+            //target
+            Texture2D targetTexture = game.Content.Load<Texture2D>("Texture/Bullet");
+            Vector3[] targetPosition = new Vector3[10];
+            for (int i = 0; i < targetPosition.Length; i++ )
+            {
+                targetPosition[i] = new Vector3(0, 10, 0);
+            }
+            target = new TargetBillboard(game.GraphicsDevice,game.Content,targetTexture,new Vector2(5),targetPosition);
+            
             turretPosition = new Vector3(128, 10, 128);
            // modelEffect = game.Content.Load<Effect>("Effect/LightingEffect");
 
@@ -86,6 +95,7 @@ namespace GameProject.Core
                // camera.Update(gameTime);
 
            //     turret.Update(camera.upDownRotation, camera.leftRightRotation,gameTime);
+              //  target.Update(gameTime);
 
                 this.camera.Update(gameTime);
                 room.Update(gameTime, this.camera);
@@ -121,7 +131,7 @@ namespace GameProject.Core
             //rs.CullMode = CullMode.None;
             //rs.FillMode = FillMode.Solid;
           //  game.GraphicsDevice.RasterizerState = rs;
-           
+            //target.Draw(camera.view, camera.projection, camera.cameraUp, Vector3.Cross(camera.cameraUp, camera.cameraDirection));
             map.DrawMap(mapEffect, "AddTexture", camera.view, camera.projection, Matrix.Identity);
             //turret.DrawModel("Lighting", 0.1f, camera);
             room.Draw(gameTime);
