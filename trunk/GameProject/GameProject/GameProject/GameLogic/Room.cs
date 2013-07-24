@@ -12,7 +12,7 @@ namespace GameProject.GameLogic
     public class Room
     {
         public ConcurrentDictionary<int, Participant> clientList;
-        Client client;
+        public Client client;
         public int totalPlayer = 0;
         Game game;
         public Room(Game game,Client clt)
@@ -74,6 +74,7 @@ namespace GameProject.GameLogic
             Participant p = new Participant(clientId, this.game);            
             p.isMe = client.parentParticipant.ClientId == clientId? true:false;
             p.position = pos;
+            p.room = this;
             if (p.isMe == true)
             {
                 p.CreateCamera(pos, this.game);

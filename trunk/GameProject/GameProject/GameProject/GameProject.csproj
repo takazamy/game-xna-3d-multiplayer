@@ -128,6 +128,7 @@
     <Compile Include="GameLogic\GameRules.cs" />
     <Compile Include="GameLogic\Player.cs" />
     <Compile Include="GameLogic\Room.cs" />
+    <Compile Include="GameLogic\TargetBillboard.cs" />
     <Compile Include="GameLogic\Turret.cs" />
     <Compile Include="Network\Client.cs" />
     <Compile Include="Network\IHandler.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Network\ReceiveCreateGameHandler.cs" />
     <Compile Include="Network\ReceiveGetListRoomHandler.cs" />
     <Compile Include="Network\ReceiveJoinRoomHandler.cs" />
+    <Compile Include="Network\ReceiveUpdateOtherPlayerMove.cs" />
     <Compile Include="Network\RequestHandler.cs" />
     <Compile Include="Participant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

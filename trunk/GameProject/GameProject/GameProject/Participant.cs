@@ -24,7 +24,7 @@ namespace GameProject
         private Vector3 rotationAngle;
         private Vector3 phapTuyen;
         Vector3 gunPosition, gunPosition2;
-
+        public Room room;
         TargetBillboard target;
 
         #endregion
@@ -56,6 +56,11 @@ namespace GameProject
             
         }
 
+        public void UpdateTurretMove(GameKeys.TURRET_STATE_LR stateLR, GameKeys.TURRET_STATE_UD stateUD)
+        {
+            turret.stateLR = stateLR;
+            turret.stateUD = stateUD;
+        }
         public void Update(GameTime gameTime)
         {
             target.Update(gameTime);
@@ -75,7 +80,8 @@ namespace GameProject
                 //turret.Update();
                 //camera.Update(gameTime);
                 //1
-                //turret.Update(camera.upDownRotation, camera.leftRightRotation, gameTime);
+
+                turret.Move(gameTime, target);
             }
            
         }
@@ -110,10 +116,10 @@ namespace GameProject
                 switch (this.position)
                 {
                     case 1:                        
-                        turret = new Turret("Model/gun2", modelEffect, gunPosition, camera, game);
+                        turret = new Turret("Model/gun2", modelEffect, gunPosition, camera, game,this);
                         break;
                     case 2:                        
-                        turret = new Turret("Model/gun2", modelEffect, gunPosition2, camera, game);
+                        turret = new Turret("Model/gun2", modelEffect, gunPosition2, camera, game, this);
                         break;
                     default:
                         break;

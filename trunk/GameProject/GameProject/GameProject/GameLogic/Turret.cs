@@ -11,7 +11,10 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System.Configuration;
 using XnaGameCore;
+
 using GameProject.GameLogic;
+using GameProject.Network;
+
 
 namespace GameProject
 {
@@ -25,13 +28,21 @@ namespace GameProject
         Texture2D gunTexture;
         Vector3 bulletLeftOffset = new Vector3(2.8f,-2.7f,11.5f);
         Vector3 bulletRightOffset = new Vector3(-2.8f, -2.7f, 11.5f);
-
-        public Turret(string assetName, Effect effect, Vector3 position,CameraComponent camera, Game game)
+        public GameKeys.TURRET_STATE_LR stateLR;
+        public GameKeys.TURRET_STATE_UD stateUD;
+        private GameKeys.TURRET_STATE_UD lastStateUD;
+        private GameKeys.TURRET_STATE_LR lastStateLR;
+        Participant participant;
+        
+        public Turret(string assetName, Effect effect, Vector3 position,CameraComponent camera, Game game, Participant p)
             : base ( assetName, effect, position, game)
         {
+            
+            participant = p;
             this.game = game;
             this.camera = camera;
-
+            stateLR = GameKeys.TURRET_STATE_LR.STAYLR;
+            stateUD = GameKeys.TURRET_STATE_UD.STAYUD;
             Vector3[] bulletPosition = new Vector3[100];
             for (int i = 0; i < bulletPosition.Length; i++)
             {
@@ -44,13 +55,58 @@ namespace GameProject
         }
 
 
-        public void Update(float xRotate, float yRotate,TargetBillboard target,GameTime gameTime)
 
+        public void Move(GameTime gameTime, TargetBillboard target)
+        {
+            float yRotate = 0.01f * (int)stateUD;
+            float xRotate = 0.01f * (int)stateLR;
+            Update(xRotate, yRotate, target, gameTime);
+        }
+
+        public void Shoot()
+        {  
+            this.Fire(camera.cameraDirection);
+        }
+
+
+        public void Update(float xRotate, float yRotate,TargetBillboard target,GameTime gameTime)
         {
             this.xRotation += xRotate;
             this.yRotation += yRotate;
+            if (xRotate > 0)
+            {
+                stateLR = GameKeys.TURRET_STATE_LR.LEFT;
+            }
+            else if (xRotate < 0)
+            {
+                stateLR = GameKeys.TURRET_STATE_LR.RIGHT;
+            }
+            else
+            {
+                stateLR = GameKeys.TURRET_STATE_LR.STAYLR;
+            }
+            if (yRotate > 0)
+            {
+                stateUD = GameKeys.TURRET_STATE_UD.UP;   
+            }
+            else if(yRotate < 0)
+            {
+                stateUD = GameKeys.TURRET_STATE_UD.DOWN;
+            }
+            else
+            {
+                stateUD = GameKeys.TURRET_STATE_UD.STAYUD;
+            }
 
-          
+            if (lastStateLR != stateLR || lastStateUD != stateUD)
+	        {
+		        if (this.participant.isMe)
+	            {
+                    RequestHandler.SendPlayerMove(participant.room.client, stateLR, stateUD);
+	            }
+                lastStateUD = stateUD;
+                lastStateLR = stateLR;
+	        }
             eslapedTime += gameTime.ElapsedGameTime.Milliseconds;
             MouseState mouse = Mouse.GetState();
             if (mouse.LeftButton == ButtonState.Pressed)
