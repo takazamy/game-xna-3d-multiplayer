@@ -137,7 +137,7 @@ namespace GameProject.Core
 
         public void Draw(GraphicsDevice device, SpriteBatch spriteBatch)
         {
-           
+            spriteBatch.Begin();
             texture = new Texture2D(device,1,1);
             texture.SetData(new[] {Color.Red});
            // device.Clear(Color.Green);
@@ -150,6 +150,7 @@ namespace GameProject.Core
             string he = (bound.Height + bound.Y).ToString();
             spriteBatch.DrawString(font, bound.Y.ToString(), new Vector2(500, (float)pos), Color.Blue);
             spriteBatch.DrawString(font, he, new Vector2(550, (float)pos), Color.Blue);
+            spriteBatch.End();
         }
     }
 }
