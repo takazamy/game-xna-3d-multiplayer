@@ -154,6 +154,7 @@ namespace GameProject
         {
             try
             {
+                
                 //  model.Root.Transform = camera.world;
                 bullet.Draw(camera.view, camera.projection, camera.cameraUp, Vector3.Cross(camera.cameraUp, camera.cameraDirection));
                 //left right Rotation
@@ -166,20 +167,24 @@ namespace GameProject
                 model.CopyAbsoluteBoneTransformsTo(modelBone);
                 foreach (ModelMesh mesh in model.Meshes)
                 {
-                    Matrix worldMatrix;
-                    worldMatrix = modelBone[mesh.ParentBone.Index] * modelWorld;
-
-                    foreach (Effect currentEffect in mesh.Effects)
+                    lock (mesh)
                     {
-                        currentEffect.CurrentTechnique = currentEffect.Techniques[technique];
-                        currentEffect.Parameters["xView"].SetValue(camera.view);
-                        currentEffect.Parameters["xProjection"].SetValue(camera.projection);
-                        currentEffect.Parameters["xWorld"].SetValue(worldMatrix);
-                        currentEffect.Parameters["xTexture"].SetValue(gunTexture);
-                        currentEffect.Parameters["WorldInverseTranspose"].SetValue(
-                          Matrix.Transpose(Matrix.Invert(mesh.ParentBone.Transform * camera.world)));
+                        Matrix worldMatrix;
+                        worldMatrix = modelBone[mesh.ParentBone.Index] * modelWorld;
+
+                        foreach (Effect currentEffect in mesh.Effects)
+                        {
+                            currentEffect.CurrentTechnique = currentEffect.Techniques[technique];
+                            currentEffect.Parameters["xView"].SetValue(camera.view);
+                            currentEffect.Parameters["xProjection"].SetValue(camera.projection);
+                            currentEffect.Parameters["xWorld"].SetValue(worldMatrix);
+                            currentEffect.Parameters["xTexture"].SetValue(gunTexture);
+                            currentEffect.Parameters["WorldInverseTranspose"].SetValue(
+                              Matrix.Transpose(Matrix.Invert(mesh.ParentBone.Transform * camera.world)));
+                        }
+                        mesh.Draw();
                     }
-                    mesh.Draw();
+                   
                 }
 
             }
