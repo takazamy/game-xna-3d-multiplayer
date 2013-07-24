@@ -10,11 +10,15 @@ namespace GameProject.GameLogic
     public class Room
     {
         public Dictionary<int, Participant> clientList;
-        Client clt;
+        Client client;
         public int totalPlayer = 0;
-        public Room()
+        Game game;
+        public Room(Game game,Client clt)
         {
+            this.game = game;
+            client = clt;
             totalPlayer = 0;
+            clientList = new Dictionary<int, Participant>();
         }
 
         public void Update(GameTime gameTime)
@@ -22,6 +26,7 @@ namespace GameProject.GameLogic
             foreach (var item in clientList)
             {
                 item.Value.Update(gameTime);
+                
             }
         }
 
@@ -39,6 +44,14 @@ namespace GameProject.GameLogic
             }
 
             
+        }
+
+        internal void CreateParticipant(int clientId)
+        {
+            Participant p = new Participant(clientId, this.game);            
+            p.isMe = client.parentParticipant.ClientId == clientId? true:false;           
+            p.CreateCamera(totalPlayer == 0? 1:2, this.game);         
+            this.clientList.Add(p.ClientId,p);
         }
     }
 }

@@ -42,6 +42,8 @@ namespace GameProject.Network
             IHandler handler = handlerList[(string)dataReceive[GameCommand.COMMAND]];
             
             handler.Handler(dataReceive);
+
+            WaitForData();
         }
 
         protected override void OnConnected(SocketPacket server)

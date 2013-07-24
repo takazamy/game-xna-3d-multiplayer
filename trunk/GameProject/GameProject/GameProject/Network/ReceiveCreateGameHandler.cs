@@ -5,6 +5,7 @@ using System.Text;
 using GameProject.GameLogic;
 using Newtonsoft.Json.Linq;
 using XnaGameCore.GameLogic.State;
+using GameProject.Core;
 namespace GameProject.Network
 {
     public class ReceiveCreateGameHandler:IHandler
@@ -22,8 +23,13 @@ namespace GameProject.Network
             Console.WriteLine("Tao Phong");
             //
             this.clt.roomId = (int)data[GameKeys.ROOMID];
-            //clt.scrManager.gameManager.room.Add(clt.parentParticipant);
+            
+            MainGame game = (MainGame)clt.scrManager.GetScreensByState(States.ScreenState.GS_MAIN_GAME);
+            game.room = new Room(game.game, this.clt);
+            game.room.CreateParticipant(clt.parentParticipant.ClientId);
+            game.setMainCamera();
             clt.scrManager.PlayScreen(States.ScreenState.GS_MAIN_GAME);
+            
         }
     }
 }

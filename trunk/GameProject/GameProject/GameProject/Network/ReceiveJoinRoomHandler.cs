@@ -19,7 +19,12 @@ namespace GameProject.Network
         {
             //this.clt.roomId = (int)data[GameKeys.ROOMID];
             //clt.scrManager.gameManager.room.Add(clt.parentParticipant);
-            clt.scrManager.PlayScreen(States.ScreenState.GS_MAIN_GAME);
+            bool success = (bool)data[GameKeys.SUCCESS];
+            if (success)
+            {
+                clt.scrManager.PlayScreen(States.ScreenState.GS_MAIN_GAME);
+            }
+            
         }
     }
 }
