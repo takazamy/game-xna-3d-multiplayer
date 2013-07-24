@@ -95,41 +95,47 @@ namespace GameProject
         }
         public override void DrawModel(string technique, float scaleRate, CameraComponent camera)
         {
-          //  model.Root.Transform = camera.world;
-            bullet.Draw(camera.view, camera.projection, camera.cameraUp, Vector3.Cross(camera.cameraUp, camera.cameraDirection));
-            //left right Rotation
-            Matrix modelWorld = Matrix.CreateScale(scaleRate)
-            * Matrix.CreateFromYawPitchRoll( yRotation, xRotation, zRotation)
-            * Matrix.CreateTranslation(position);
-
-
-            Matrix[] modelBone = new Matrix[model.Bones.Count];
-            model.CopyAbsoluteBoneTransformsTo(modelBone);
-            foreach (ModelMesh mesh in model.Meshes)
+            try
             {
-                Matrix worldMatrix;
-                    worldMatrix = modelBone[mesh.ParentBone.Index] * modelWorld;
-                
-                foreach (Effect currentEffect in mesh.Effects)
+                //  model.Root.Transform = camera.world;
+                bullet.Draw(camera.view, camera.projection, camera.cameraUp, Vector3.Cross(camera.cameraUp, camera.cameraDirection));
+                //left right Rotation
+                Matrix modelWorld = Matrix.CreateScale(scaleRate)
+                * Matrix.CreateFromYawPitchRoll(yRotation, xRotation, zRotation)
+                * Matrix.CreateTranslation(position);
+
+
+                Matrix[] modelBone = new Matrix[model.Bones.Count];
+                model.CopyAbsoluteBoneTransformsTo(modelBone);
+                foreach (ModelMesh mesh in model.Meshes)
                 {
-                    currentEffect.CurrentTechnique = currentEffect.Techniques[technique];
-                    currentEffect.Parameters["xView"].SetValue(camera.view);
-                    currentEffect.Parameters["xProjection"].SetValue(camera.projection);
-                    currentEffect.Parameters["xWorld"].SetValue(worldMatrix);
-                    currentEffect.Parameters["xTexture"].SetValue(gunTexture);
-                    currentEffect.Parameters["WorldInverseTranspose"].SetValue(
-                      Matrix.Transpose(Matrix.Invert(mesh.ParentBone.Transform * camera.world)));
+                    Matrix worldMatrix;
+                    worldMatrix = modelBone[mesh.ParentBone.Index] * modelWorld;
+
+                    foreach (Effect currentEffect in mesh.Effects)
+                    {
+                        currentEffect.CurrentTechnique = currentEffect.Techniques[technique];
+                        currentEffect.Parameters["xView"].SetValue(camera.view);
+                        currentEffect.Parameters["xProjection"].SetValue(camera.projection);
+                        currentEffect.Parameters["xWorld"].SetValue(worldMatrix);
+                        currentEffect.Parameters["xTexture"].SetValue(gunTexture);
+                        currentEffect.Parameters["WorldInverseTranspose"].SetValue(
+                          Matrix.Transpose(Matrix.Invert(mesh.ParentBone.Transform * camera.world)));
+                    }
+                    mesh.Draw();
                 }
-                mesh.Draw();
+
             }
-
-
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
             //base.DrawModel(technique, scaleRate, camera);
         }
         private void Fire(Vector3 direction)
         {
-            Console.WriteLine(xRotation);
-            Console.WriteLine(yRotation);
+           // Console.WriteLine(xRotation);
+          //  Console.WriteLine(yRotation);
 
             Vector3 firePosition = camera.cameraPosition + camera.cameraDirection * 9;
 

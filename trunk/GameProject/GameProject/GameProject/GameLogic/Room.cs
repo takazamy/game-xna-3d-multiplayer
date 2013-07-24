@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using GameProject.Network;
 using Microsoft.Xna.Framework;
+using System.Collections.Concurrent;
 
 namespace GameProject.GameLogic
 {
     public class Room
     {
-        public Dictionary<int, Participant> clientList;
+        public ConcurrentDictionary<int, Participant> clientList;
         Client client;
         public int totalPlayer = 0;
         Game game;
@@ -18,30 +19,51 @@ namespace GameProject.GameLogic
             this.game = game;
             client = clt;
             totalPlayer = 0;
-            clientList = new Dictionary<int, Participant>();
+            clientList = new ConcurrentDictionary<int, Participant>();
         }
 
         public void Update(GameTime gameTime)
         {
-            foreach (var item in clientList)
+            lock (clientList)
             {
-                item.Value.Update(gameTime);
-                
+                try
+                {
+
+                    foreach (var item in clientList)
+                    {
+                        item.Value.Update(gameTime);
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                    Console.WriteLine(ex.Message);
+                }
             }
+           
         }
 
         public void Add(Participant p)
         {
-            clientList.Add(p.ClientId, p);
-            totalPlayer++;
+            lock (clientList)
+            {
+                clientList.TryAdd(p.ClientId, p);
+                totalPlayer++;
+            }
         }
 
         public void Draw(GameTime gameTime)
         {
-            foreach (var item in clientList)
+            lock (clientList)
             {
-                item.Value.Draw(gameTime);
+                foreach (var item in clientList)
+                {
+                    item.Value.Draw(gameTime);
+                }
             }
+
+          
 
             
         }
