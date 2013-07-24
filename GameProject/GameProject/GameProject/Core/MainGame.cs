@@ -87,8 +87,8 @@ namespace GameProject.Core
 
            //     turret.Update(camera.upDownRotation, camera.leftRightRotation,gameTime);
 
-
-                room.Update(gameTime);
+                this.camera.Update(gameTime);
+                room.Update(gameTime, this.camera);
                 //for (int i = 0; i < room.clientList.Count; i++)
                 //{
                 //    if (gameManager.client.parentParticipant.isMe)
