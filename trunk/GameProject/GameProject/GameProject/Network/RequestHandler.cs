@@ -33,7 +33,7 @@ namespace GameProject.Network
             clt.send(mesg.ToString());
         }
 
-        public static void SendPlayerMove(Client clt, GameKeys.TURRET_STATE_LR stateLR, GameKeys.TURRET_STATE_UD stateUD)
+        public static void SendPlayerMove(Client clt, int stateLR, int stateUD)
         {
             JObject mesg = new JObject();
             mesg[GameCommand.COMMAND] = GameCommand.MOVE;
