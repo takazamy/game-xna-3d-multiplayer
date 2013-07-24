@@ -20,6 +20,7 @@ namespace GameProject.GameLogic
         Random rand = new Random();
         float eslapsedTime;
         public BoundingBox[] targetBox;
+        bool firstTime = true;
 
         public TargetBillboard(GraphicsDevice graphicDevice, ContentManager content,
             Texture2D texture, Vector2 billboardSize, Vector3[] billboardsPosition) :
@@ -27,18 +28,16 @@ namespace GameProject.GameLogic
         {
             beginPosition = billboardPosition[0];
             targetBox = new BoundingBox[this.billboardPosition.Length];
-
-
         }
         public void Update(GameTime gameTime)
         {
             eslapsedTime += gameTime.ElapsedGameTime.Milliseconds;
 
-            if (eslapsedTime >= 10000)
+            if (eslapsedTime >=5000 || firstTime == true)
             {
                 for (int i = 0; i < this.billboardPosition.Length; i++)
                 {
-                    billboardPosition[i] = new Vector3(rand.Next(20, 100), rand.Next(20, 50), 230);
+                    billboardPosition[i] = new Vector3(rand.Next(20, 200), rand.Next(10, 40), 230);
                     this.GeneratePactices(billboardPosition);
 
                 }
@@ -53,7 +52,7 @@ namespace GameProject.GameLogic
                 }
                 //Console.WriteLine("targetPos: {0}", billboardPosition[0]);
                 //Console.WriteLine("targetBox: {0}", targetBox[0]);
- 
+                firstTime = false;
                 eslapsedTime = 0;
             }
             
@@ -61,6 +60,7 @@ namespace GameProject.GameLogic
 
         public void GotHit()
         {
+
             this.GeneratePactices(billboardPosition);
         }
     }
