@@ -16,6 +16,21 @@ namespace GameProject.GameLogic
         public const string SUCCESS = "success";
         public const string POSITION = "pos";
         public const string INFO = "info";
+        public const string LEFTRIGHTMOVE = "lrm";
+        public const string UPDOWNMOVE = "udm";
+
+        public enum TURRET_STATE_UD
+        {
+            STAYUD = 0,
+            UP = 1,
+            DOWN = -1
+        }
+        public enum TURRET_STATE_LR
+        {
+            STAYLR = 0,
+            LEFT = 1,
+            RIGHT = -1
+        }
         //public static const string 
     }
 }

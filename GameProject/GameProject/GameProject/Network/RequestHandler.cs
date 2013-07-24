@@ -33,8 +33,14 @@ namespace GameProject.Network
             clt.send(mesg.ToString());
         }
 
-        public static void SendUpdateCameraLook(Client clt, Vector3 rotateAngle)
+        public static void SendPlayerMove(Client clt, GameKeys.TURRET_STATE_LR stateLR, GameKeys.TURRET_STATE_UD stateUD)
         {
+            JObject mesg = new JObject();
+            mesg[GameCommand.COMMAND] = GameCommand.MOVE;
+            mesg[GameKeys.LEFTRIGHTMOVE] = (int)stateLR;
+            mesg[GameKeys.UPDOWNMOVE] = (int)stateUD;
+            clt.send(mesg.ToString());
+
         }
     }
 }
