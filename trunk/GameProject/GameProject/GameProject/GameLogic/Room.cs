@@ -5,6 +5,7 @@ using System.Text;
 using GameProject.Network;
 using Microsoft.Xna.Framework;
 using System.Collections.Concurrent;
+using XnaGameCore;
 
 namespace GameProject.GameLogic
 {
@@ -22,7 +23,7 @@ namespace GameProject.GameLogic
             clientList = new ConcurrentDictionary<int, Participant>();
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, CameraComponent camera)
         {
             lock (clientList)
             {
@@ -31,8 +32,8 @@ namespace GameProject.GameLogic
 
                     foreach (var item in clientList)
                     {
+                        item.Value.camera = camera;
                         item.Value.Update(gameTime);
-
                     }
                 }
                 catch (Exception ex)
