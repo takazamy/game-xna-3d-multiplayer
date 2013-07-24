@@ -10,9 +10,11 @@ namespace GameProject.GameLogic
         //game properties keys
         public const string ID = "id";
         public const string ROOMID = "roomid";
-        public static string NUMBER_USERS = "numberusers";
-        public static string MAX = "max";
-        public static string ROOM_LIST = "roomlist";
+        public const string NUMBER_USERS = "numberusers";
+        public const string MAX = "max";
+        public const string ROOM_LIST = "roomlist";
+        public const string SUCCESS = "success";
+        public const string POSITION = "pos";
         //public static const string 
     }
 }

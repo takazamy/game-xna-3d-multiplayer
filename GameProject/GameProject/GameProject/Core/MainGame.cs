@@ -28,9 +28,9 @@ namespace GameProject.Core
        // Turret turret;
         Skybox skyBox;
         BillboardSystem trees;
-        Effect modelEffect, mapEffect;
+        Effect mapEffect;
         GameManager gameManager;
-
+        public Room room;
         public MainGame(ScreenManager scrManager, Game game, SpriteBatch spriteBatch,GameManager gameManager)
             : base(scrManager, game, spriteBatch)
         {
@@ -43,14 +43,14 @@ namespace GameProject.Core
         {
             // TODO: Add your initialization code here
 
-
+            
         }
 
         protected override void LoadContent()
         {
-            modelEffect = game.Content.Load<Effect>("Effect/LightingEffect");
+            //modelEffect = game.Content.Load<Effect>("Effect/LightingEffect");
             mapEffect = game.Content.Load<Effect>("Effect/MapEffect");
-            camera = new CameraComponent(game, new Vector3(128, 8, 128), new Vector3(128, 8, 138), new Vector3(0, 1, 0),gameManager.mouse);
+            //camera = new CameraComponent(game, new Vector3(128, 8, 128), new Vector3(128, 8, 138), new Vector3(0, 1, 0));
             map = new LoadMap("../../../Map/map1.bmp", "Texture/grass", game);
             //turret = new Turret("Model/turret", modelEffect, new Vector3(128, 0, 128), camera, game);
             skyBox = new Skybox("Model/cube", "Effect/Skybox", "Texture/Islands", game.Content);
@@ -73,12 +73,31 @@ namespace GameProject.Core
             if (enable)
             {
                 camera.Update(gameTime);
+                room.Update(gameTime);
+                //for (int i = 0; i < room.clientList.Count; i++)
+                //{
+                //    if (gameManager.client.parentParticipant.isMe)
+                //    {
+                //        camera = gameManager.client.parentParticipant.camera;
+                //    }
+                //}
                // turret.Update(camera.upDownRotation, camera.leftRightRotation);
                // turret.Update(0f, 0f);
                 
             }
         }
-
+        public void setMainCamera()
+        {
+            foreach (var item in room.clientList)
+            {
+                Participant p = item.Value;
+                if (p.isMe)
+                {
+                    camera = p.camera;
+                    break;
+                }
+            }
+        }
         public override void Draw(GameTime gameTime)
         {
             
@@ -86,9 +105,10 @@ namespace GameProject.Core
             rs.CullMode = CullMode.None;
             rs.FillMode = FillMode.Solid;
             game.GraphicsDevice.RasterizerState = rs;
-
+           
             map.DrawMap(mapEffect, "AddTexture", camera.view, camera.projection, Matrix.Identity);
             //turret.DrawModel("Lighting", 0.1f, camera);
+            room.Draw(gameTime);
             skyBox.Draw(camera.view, camera.projection, camera.cameraPosition);
             trees.Draw(camera.view,camera.projection,camera.cameraUp,Vector3.Cross(camera.cameraUp,camera.cameraDirection));
             base.Draw(gameTime);

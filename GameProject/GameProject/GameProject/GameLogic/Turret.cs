@@ -40,6 +40,16 @@ namespace GameProject
             this.turretBullet = new Bullet(game.GraphicsDevice, game.Content, bulletTexture, new Vector2(1), bulletPosition);
         }
 
+        public void Update(GameTime gameTime)
+        {
+        }
+
+
+        public void turretMove(float xRotate, float yRotate, Vector3 direction)
+        {
+           // yRotation +
+        }
+
         public void Update(float xRotate, float yRotate)
         {
 

@@ -20,7 +20,7 @@ namespace GameProject.Network
 
         public override void Handler(JObject data)
         {
-            this.clt.parentParticipant = new Participant((int)data[GameKeys.ID]);
+            this.clt.parentParticipant = new Participant((int)data[GameKeys.ID], scrManager.game);
             scrManager.PlayScreen(States.ScreenState.GS_HOST);
         }
     }
