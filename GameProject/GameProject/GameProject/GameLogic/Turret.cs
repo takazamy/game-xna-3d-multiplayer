@@ -18,10 +18,10 @@ namespace GameProject
     {
         Game game;        
         CameraComponent camera;
-        Effect turretEffect;
-        ModelBone turretLeftBone, turretRightBone, turretCenterBone, turretBaseBone;
-        Matrix leftTransform, rightTransform, centerTransform, baseTransform;
-        Bullet turretBullet;
+        Bullet bullet;
+        int bulletIndex = 0;
+        float eslapedTime = 0;
+        Texture2D gunTexture;
         Vector3 bulletLeftOffset = new Vector3(2.8f,-2.7f,11.5f);
         Vector3 bulletRightOffset = new Vector3(-2.8f, -2.7f, 11.5f);
 
@@ -31,36 +31,39 @@ namespace GameProject
             this.game = game;
             this.camera = camera;
 
-            Vector3[] bulletPosition = new Vector3[1];
-            for (int i = 0; i < bulletPosition.Length; i++ )
+            Vector3[] bulletPosition = new Vector3[100];
+            for (int i = 0; i < bulletPosition.Length; i++)
             {
-                bulletPosition[i] = camera.cameraPosition + bulletRightOffset;
+                bulletPosition[i] = new  Vector3(0,10,0);
             }
+
+            gunTexture = game.Content.Load<Texture2D>("Texture/Metal");
             Texture2D bulletTexture = game.Content.Load<Texture2D>("Texture/bullet");
-            this.turretBullet = new Bullet(game.GraphicsDevice, game.Content, bulletTexture, new Vector2(1), bulletPosition);
-        }
-
-        public void Update(GameTime gameTime)
-        {
+            this.bullet = new Bullet(game.GraphicsDevice, game.Content, bulletTexture, new Vector2(0.5f), bulletPosition);
         }
 
 
-        public void turretMove(float xRotate, float yRotate, Vector3 direction)
+        public void Update(float xRotate, float yRotate,GameTime gameTime)
+
         {
-           // yRotation +
-        }
+            this.xRotation += xRotate;
+            this.yRotation += yRotate;
 
-        public void Update(float xRotate, float yRotate)
-        {
-
-            turretBullet.Update(camera.cameraDirection);
-
-
+            eslapedTime += gameTime.ElapsedGameTime.Milliseconds;
+            MouseState mouse = Mouse.GetState();
+            if (mouse.LeftButton == ButtonState.Pressed)
+            {
+                if (eslapedTime >= 100)
+                {
+                    this.Fire(camera.cameraDirection);
+                    eslapedTime = 0;
+                }
+            }
+            bullet.Update(gameTime);
             
-            //this.zRotation += xRotate;
-            //this.yRotation += yRotate;
-            //yRotation = MathHelper.PiOver2;
 
+
+            #region rotation
             KeyboardState key = Keyboard.GetState();
             if (key.IsKeyDown(Keys.Up))
             {
@@ -87,43 +90,25 @@ namespace GameProject
             {
                 xRotation -= 0.01f;
             }
-
+#endregion
         }
         public override void DrawModel(string technique, float scaleRate, CameraComponent camera)
         {
           //  model.Root.Transform = camera.world;
-            turretBullet.Draw(camera.view, camera.projection, camera.cameraUp, Vector3.Cross(camera.cameraUp, camera.cameraDirection));
+            bullet.Draw(camera.view, camera.projection, camera.cameraUp, Vector3.Cross(camera.cameraUp, camera.cameraDirection));
             //left right Rotation
             Matrix modelWorld = Matrix.CreateScale(scaleRate)
-            * Matrix.CreateFromYawPitchRoll(MathHelper.PiOver2 + yRotation, xRotation, zRotation)
-            * Matrix.CreateTranslation(position);
-            // center rotation
-            Matrix modelWorld1 = Matrix.CreateScale(scaleRate)
-            * Matrix.CreateFromYawPitchRoll(MathHelper.PiOver2 + yRotation, 0f, 0f)
-            * Matrix.CreateTranslation(position);
-            // base rotation
-            Matrix modelWorld2 = Matrix.CreateScale(scaleRate)
-            * Matrix.CreateFromYawPitchRoll(MathHelper.PiOver2, 0f, 0f)
+            * Matrix.CreateFromYawPitchRoll( yRotation, xRotation, zRotation)
             * Matrix.CreateTranslation(position);
 
-            int i = 0;
+
             Matrix[] modelBone = new Matrix[model.Bones.Count];
             model.CopyAbsoluteBoneTransformsTo(modelBone);
             foreach (ModelMesh mesh in model.Meshes)
             {
                 Matrix worldMatrix;
-                if (mesh.Name == "turret_2_b")
-                {
-                    worldMatrix = modelBone[mesh.ParentBone.Index] * modelWorld2;
-                }
-                else if (mesh.Name == "turret_2_t")
-                {
-                    worldMatrix = modelBone[mesh.ParentBone.Index] * modelWorld1;
-                }
-                else
-                {
                     worldMatrix = modelBone[mesh.ParentBone.Index] * modelWorld;
-                }
+                
 
 
                 foreach (Effect currentEffect in mesh.Effects)
@@ -132,7 +117,7 @@ namespace GameProject
                     currentEffect.Parameters["xView"].SetValue(camera.view);
                     currentEffect.Parameters["xProjection"].SetValue(camera.projection);
                     currentEffect.Parameters["xWorld"].SetValue(worldMatrix);
-                    currentEffect.Parameters["xTexture"].SetValue(modelTextures[i++]);
+                    currentEffect.Parameters["xTexture"].SetValue(gunTexture);
                     currentEffect.Parameters["WorldInverseTranspose"].SetValue(
                       Matrix.Transpose(Matrix.Invert(mesh.ParentBone.Transform * camera.world)));
                 }
@@ -142,6 +127,21 @@ namespace GameProject
 
             //base.DrawModel(technique, scaleRate, camera);
         }
+        private void Fire(Vector3 direction)
+        {
 
+            Vector3 firePosition = camera.cameraPosition + camera.cameraDirection * 9;
+
+            bullet.SetFirePosition(firePosition, direction, bulletIndex);
+            
+            if (bulletIndex >= bullet.billboardPosition.Length - 1)
+            {
+                bulletIndex = 0;
+            }
+            else
+            {
+                bulletIndex++;
+            }
+        }
     }
 }
