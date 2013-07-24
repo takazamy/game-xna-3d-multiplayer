@@ -27,7 +27,7 @@ namespace GameProject.Network
             
             MainGame game = (MainGame)clt.scrManager.GetScreensByState(States.ScreenState.GS_MAIN_GAME);
             game.room = new Room(game.game, this.clt);
-            game.room.CreateParticipant(clt.parentParticipant.ClientId);
+            game.room.CreateParticipant(clt.parentParticipant.ClientId, 1);
             game.setMainCamera();
 
             clt.scrManager.PlayScreen(States.ScreenState.GS_MAIN_GAME);

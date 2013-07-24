@@ -46,11 +46,19 @@ namespace GameProject.GameLogic
             
         }
 
-        internal void CreateParticipant(int clientId)
+        internal void CreateParticipant(int clientId, int pos)
         {
             Participant p = new Participant(clientId, this.game);            
-            p.isMe = client.parentParticipant.ClientId == clientId? true:false;           
-            p.CreateCamera(totalPlayer == 0? 1:2, this.game);
+            p.isMe = client.parentParticipant.ClientId == clientId? true:false;
+            p.position = pos;
+            if (p.isMe == true)
+            {
+                p.CreateCamera(pos, this.game);
+            }
+            else
+            {
+                p.CreateCamera(pos == 1?2:1, this.game);
+            }
             this.Add(p);
         }
     }

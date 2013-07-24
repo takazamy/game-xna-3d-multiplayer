@@ -23,29 +23,37 @@ namespace GameProject.Network
             bool success = (bool)data[GameKeys.SUCCESS];
             if (success)
             {
-                int idJoin = (int)data[GameKeys.ID];
-                JArray arr = (JArray)data[GameKeys.INFO];
                 MainGame game = (MainGame)clt.scrManager.GetScreensByState(States.ScreenState.GS_MAIN_GAME);
-                int idCreateRoom = 0;
-                if (game.room == null)
+                int idJoin = (int)data[GameKeys.ID];
+                if (idJoin != clt.parentParticipant.ClientId)
                 {
-                    foreach (JObject item in arr)
-                    {
-                        if ((int)item[GameKeys.POSITION] == 1)
-                        {
-                            idCreateRoom = (int)item[GameKeys.ID];
-                            break;
-                        }
-                        
-                    }
-                    game.room = new Room(game.game, this.clt);
-                    game.room.CreateParticipant(idCreateRoom);
-                    game.room.CreateParticipant(idJoin);
-                    game.setMainCamera();
-
+                    game.room.CreateParticipant(idJoin, 2);
                 }
-               
-                clt.scrManager.PlayScreen(States.ScreenState.GS_MAIN_GAME);
+                else
+                {
+                    JArray arr = (JArray)data[GameKeys.INFO];
+
+                    int idCreateRoom = 0;
+                    if (game.room == null)
+                    {
+                        foreach (JObject item in arr)
+                        {
+                            if ((int)item[GameKeys.POSITION] == 1)
+                            {
+                                idCreateRoom = (int)item[GameKeys.ID];
+                                break;
+                            }
+
+                        }
+                        game.room = new Room(game.game, this.clt);
+                        game.room.CreateParticipant(idCreateRoom, 1);
+                        game.room.CreateParticipant(idJoin, 2);
+                        game.setMainCamera();
+
+                    }
+                    clt.roomId = (int)data[GameKeys.ROOMID];
+                    clt.scrManager.PlayScreen(States.ScreenState.GS_MAIN_GAME);
+                }
             }
             
         }
