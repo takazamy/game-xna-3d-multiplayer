@@ -29,6 +29,21 @@ namespace GameServer
             JObject mesg = new JObject();
             mesg[GameCommand.COMMAND] = GameCommand.JOIN_ROOM;
             mesg[GameKeys.SUCCESS] = success;
+            if (success)
+            {
+                JArray arr = new JArray();
+                JObject info;
+                foreach (var item in clt.refRoom.clientList)
+	            {
+		            info = new JObject();
+                    Client cl =  item.Value;
+                    info[GameKeys.ID] = item.Key;
+                    info[GameKeys.POSITION] = cl.parentParticipant.position;
+                    arr.Add(info);
+	            }
+                             
+             
+            }
             clt.send(mesg.ToString());
         }
     }

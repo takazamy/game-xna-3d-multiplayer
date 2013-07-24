@@ -11,6 +11,7 @@ namespace GameServer
 
         public int hp;        
         public int ClientId;
+        public int position;
         #endregion
 
         public Participant(int clientId)

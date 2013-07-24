@@ -14,6 +14,7 @@ namespace GameServer
         public const string MAX = "max";
         public const string ROOM_LIST = "roomlist";
         public const string SUCCESS = "success";
+        public const string POSITION = "pos";
 
     }
 }

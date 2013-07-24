@@ -20,8 +20,17 @@ namespace GameServer
 
         public void Add(Client clt)
         {
+            if (totalPlayer == 0)
+            {
+                clt.parentParticipant.position = 1;
+            }
+            else
+            {
+                clt.parentParticipant.position = 2;
+            }
             clientList.Add(clt.parentParticipant.ClientId, clt);
             totalPlayer++;
+            clt.refRoom = this;
         }
     }
 }
