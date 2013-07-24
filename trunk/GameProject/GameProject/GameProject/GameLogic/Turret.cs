@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System.Configuration;
 using XnaGameCore;
+using GameProject.GameLogic;
 
 namespace GameProject
 {
@@ -43,7 +44,7 @@ namespace GameProject
         }
 
 
-        public void Update(float xRotate, float yRotate,GameTime gameTime)
+        public void Update(float xRotate, float yRotate,TargetBillboard target,GameTime gameTime)
 
         {
             this.xRotation += xRotate;
@@ -60,7 +61,7 @@ namespace GameProject
                     eslapedTime = 0;
                 }
             }
-            bullet.Update(gameTime);
+            bullet.Update(gameTime,target);
             
 
 

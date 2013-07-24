@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using XnaGameCore;
 using Microsoft.Xna.Framework.Graphics;
+using GameProject.GameLogic;
 
 namespace GameProject
 {
@@ -24,6 +25,8 @@ namespace GameProject
         private Vector3 phapTuyen;
         Vector3 gunPosition, gunPosition2;
 
+        TargetBillboard target;
+
         #endregion
 
         public Participant(int id, Game game)
@@ -41,17 +44,28 @@ namespace GameProject
             modelEffect = game.Content.Load<Effect>("Effect/LightingEffect");
             gunPosition = new Vector3(90, 5, 128);
             gunPosition2 = new Vector3(180, 5, 128);
+
+
+            Texture2D targetTexture = game.Content.Load<Texture2D>("Texture/Bullet");
+            Vector3[] targetPosition = new Vector3[10];
+            for (int i = 0; i < targetPosition.Length; i++)
+            {
+                targetPosition[i] = new Vector3(0, -10, 0);
+            }
+            target = new TargetBillboard(game.GraphicsDevice, game.Content, targetTexture, new Vector2(10), targetPosition);
+            
         }
 
         public void Update(GameTime gameTime)
         {
+            target.Update(gameTime);
             if (isMe)
             {
                 //Camera
-                //camera.Update(gameTime);
+         //       camera.Update(gameTime);
                 //1 
                // Console.WriteLine("ClientId: " + this.ClientId + " isme:" + isMe);
-                turret.Update(camera.upDownRotation, camera.leftRightRotation,gameTime);
+                turret.Update(camera.upDownRotation, camera.leftRightRotation,target,gameTime);
 
             }
             else
@@ -63,12 +77,16 @@ namespace GameProject
                 //1
                 //turret.Update(camera.upDownRotation, camera.leftRightRotation, gameTime);
             }
+           
         }
 
         public void Draw(GameTime gameTime)
         {
             turret.DrawModel("Lighting", 0.1f, camera);
-            Console.WriteLine("ClientId:" + this.ClientId + "turret:" + turret.position);
+          //  Console.WriteLine("ClientId:" + this.ClientId + "turret:" + turret.position);
+
+            target.Draw(camera.view, camera.projection, camera.cameraUp, Vector3.Cross(camera.cameraUp, camera.cameraDirection));
+            //Console.WriteLine("ClientId:" + this.ClientId + "turret:" + turret.position);
         }
 
         internal void CreateCamera(int pos, Game game)
