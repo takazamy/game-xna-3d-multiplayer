@@ -20,6 +20,7 @@ namespace GameProject
         public bool isMe;
         public int position;
         Game game;
+        Vector3 gunPosition, gunPosition2;
         #endregion
 
         public Participant(int id, Game game)
@@ -34,6 +35,8 @@ namespace GameProject
         public void Init()
         {
             modelEffect = game.Content.Load<Effect>("Effect/LightingEffect");
+            gunPosition = new Vector3(90, 5, 128);
+            gunPosition2 = new Vector3(180, 5, 128);
         }
 
         public void Update(GameTime gameTime)
@@ -65,12 +68,12 @@ namespace GameProject
                 switch (position)
                 {
                     case 1:
-                        camera = new CameraComponent(game, new Vector3(128, 8, 128), new Vector3(128, 8, 138), new Vector3(0, 1, 0));
-                        turret = new Turret("Model/turret", modelEffect, new Vector3(128, 0, 128), camera, game);
+                        camera = new CameraComponent(game, gunPosition + new Vector3(0,0.8f,0),gunPosition + new Vector3(0, 0.8f, 10), new Vector3(0, 1, 0));
+                        turret = new Turret("Model/gun2", modelEffect, gunPosition, camera, game);
                         break;
                     case 2:
-                        camera = new CameraComponent(game, new Vector3(128, 8, 128), new Vector3(128, 8, 138), new Vector3(0, 1, 0));
-                        turret = new Turret("Model/turret", modelEffect, new Vector3(128, 0, 128), camera, game);
+                        camera = new CameraComponent(game, gunPosition2 + new Vector3(0, 0.8f, 0), gunPosition2 + new Vector3(0, 0.8f, 10), new Vector3(0, 1, 0));
+                        turret = new Turret("Model/gun2", modelEffect, gunPosition2, camera, game);
                         break;
                     default:
                         break;
