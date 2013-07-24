@@ -43,8 +43,9 @@ namespace GameServer
 	            }
                 mesg[GameKeys.INFO] = arr;
                 mesg[GameKeys.ID] = clt.parentParticipant.ClientId;
+                mesg[GameKeys.ROOMID] = clt.refRoom.roomId;
             }
-            clt.send(mesg.ToString());
+            clt.refRoom.SendAllInRoom(mesg.ToString());
         }
     }
 }
