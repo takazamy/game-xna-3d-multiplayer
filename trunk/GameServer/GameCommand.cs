@@ -13,5 +13,7 @@ namespace GameServer
         public const string CREATE_GAME = "create";
         public const string GET_LIST_ROOM = "getlistroom";
         public const string JOIN_ROOM = "join";
+        public const string MOVE = "move";
+        public const string SHOOT = "shoot";
     }
 }

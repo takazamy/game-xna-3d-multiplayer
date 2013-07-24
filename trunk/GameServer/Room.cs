@@ -40,5 +40,16 @@ namespace GameServer
                 item.Value.send(mesg);
             }
         }
+
+        public void SendOthersInRoom(String mesg, int myId)
+        {
+            foreach (var item in clientList)
+            {
+                if (item.Key != myId)
+                {
+                    item.Value.send(mesg);
+                }
+            }
+        }
     }
 }
