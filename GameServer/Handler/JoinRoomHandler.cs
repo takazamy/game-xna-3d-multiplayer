@@ -28,8 +28,9 @@ namespace GameServer.Handler
             }
             else
             {
-                GameRequest.sendJoinRoom(this.client, true);
                 room.Add(client);
+                GameRequest.sendJoinRoom(this.client, true);
+                
             }
         }
     }
