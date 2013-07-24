@@ -42,8 +42,10 @@ namespace GameProject.Core
 
         public void Draw(GameTime gameTime)
         {
-            scrManager.currentScreen.Draw(gameTime);          
-            mouse.Draw(gameTime, this.spriteBatch);
+            scrManager.currentScreen.Draw(gameTime);  
+
+            if(scrManager.currentScreen.state != States.ScreenState.GS_MAIN_GAME)
+                mouse.Draw(gameTime, this.spriteBatch);
            // room.Draw(gameTime);
         }
     }

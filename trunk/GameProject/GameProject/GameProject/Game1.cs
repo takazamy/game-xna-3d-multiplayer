@@ -109,12 +109,12 @@ namespace GameProject
             rs.CullMode = CullMode.None;
             rs.FillMode = FillMode.Solid;
             GraphicsDevice.RasterizerState = rs;
-            this.spriteBatch.Begin();
+           // this.spriteBatch.Begin();
             // TODO: Add your drawing code here
             gameManager.Draw(gameTime);
             
             
-            this.spriteBatch.End();
+           // this.spriteBatch.End();
             base.Draw(gameTime);
         }
     }

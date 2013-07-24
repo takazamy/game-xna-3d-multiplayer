@@ -25,11 +25,15 @@ namespace GameProject.Core
     {
         CameraComponent camera;
         LoadMap map;
-       // Turret turret;
+        Turret turret;
         Skybox skyBox;
         BillboardSystem trees;
         Effect mapEffect;
         GameManager gameManager;
+
+        Vector3 turretPosition;
+
+
         public Room room;
         public MainGame(ScreenManager scrManager, Game game, SpriteBatch spriteBatch,GameManager gameManager)
             : base(scrManager, game, spriteBatch)
@@ -37,6 +41,8 @@ namespace GameProject.Core
             this.game = game;
             this.gameManager = gameManager;
             this.LoadContent();
+
+
         }
 
         public override void Initialize()
@@ -48,11 +54,16 @@ namespace GameProject.Core
 
         protected override void LoadContent()
         {
-            //modelEffect = game.Content.Load<Effect>("Effect/LightingEffect");
+            turretPosition = new Vector3(128, 10, 128);
+           // modelEffect = game.Content.Load<Effect>("Effect/LightingEffect");
+
             mapEffect = game.Content.Load<Effect>("Effect/MapEffect");
-            //camera = new CameraComponent(game, new Vector3(128, 8, 128), new Vector3(128, 8, 138), new Vector3(0, 1, 0));
+
+     //       camera = new CameraComponent(game, turretPosition + new Vector3(0f, 0.8f, 0f), turretPosition +  new Vector3(0f, 0.8f, 10f), new Vector3(0, 1, 0),gameManager.mouse);
+
+
             map = new LoadMap("../../../Map/map1.bmp", "Texture/grass", game);
-            //turret = new Turret("Model/turret", modelEffect, new Vector3(128, 0, 128), camera, game);
+         //   turret = new Turret("Model/gun2", modelEffect, turretPosition, camera, game);
             skyBox = new Skybox("Model/cube", "Effect/Skybox", "Texture/Islands", game.Content);
 
 
@@ -73,6 +84,10 @@ namespace GameProject.Core
             if (enable)
             {
                 camera.Update(gameTime);
+
+           //     turret.Update(camera.upDownRotation, camera.leftRightRotation,gameTime);
+
+
                 room.Update(gameTime);
                 //for (int i = 0; i < room.clientList.Count; i++)
                 //{
@@ -83,6 +98,7 @@ namespace GameProject.Core
                 //}
                // turret.Update(camera.upDownRotation, camera.leftRightRotation);
                // turret.Update(0f, 0f);
+
                 
             }
         }
@@ -100,11 +116,11 @@ namespace GameProject.Core
         }
         public override void Draw(GameTime gameTime)
         {
-            
-            RasterizerState rs = new RasterizerState();
-            rs.CullMode = CullMode.None;
-            rs.FillMode = FillMode.Solid;
-            game.GraphicsDevice.RasterizerState = rs;
+           
+            //RasterizerState rs = new RasterizerState();
+            //rs.CullMode = CullMode.None;
+            //rs.FillMode = FillMode.Solid;
+          //  game.GraphicsDevice.RasterizerState = rs;
            
             map.DrawMap(mapEffect, "AddTexture", camera.view, camera.projection, Matrix.Identity);
             //turret.DrawModel("Lighting", 0.1f, camera);
