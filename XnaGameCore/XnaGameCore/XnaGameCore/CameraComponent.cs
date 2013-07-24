@@ -33,7 +33,7 @@ namespace XnaGameCore
         public float upDownRotation = 0;
         bool isFirstTime = true;
 
-        public CameraComponent(Game game, Vector3 position, Vector3 target, Vector3 up,MouseComponent mouse)
+        public CameraComponent(Game game, Vector3 position, Vector3 target, Vector3 up)
         {
             this.game = game;
             cameraPosition = position;
@@ -43,9 +43,9 @@ namespace XnaGameCore
             CreatLookAt();
 
 
-            projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4,
-                (float)game.Window.ClientBounds.Width /
-                (float)game.Window.ClientBounds.Height,
+            projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4,400/300,
+                //(float)game.Window.ClientBounds.Width /
+               // (float)game.Window.ClientBounds.Height,
                 2, 2000);
         
         }

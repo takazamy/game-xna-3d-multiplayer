@@ -24,7 +24,7 @@ namespace XnaGameCore.GameLogic.Screens
         public ScreenManager scrManager;
         protected Texture2D backGround;
         protected SpriteBatch spriteBatch;
-        protected Game game;
+        public Game game;
         public Boolean enable;
         public Screens(ScreenManager scrManager, Game game, SpriteBatch _spritebatch)            
         {
