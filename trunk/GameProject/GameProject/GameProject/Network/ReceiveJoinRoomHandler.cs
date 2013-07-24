@@ -24,8 +24,27 @@ namespace GameProject.Network
             if (success)
             {
                 int idJoin = (int)data[GameKeys.ID];
+                JArray arr = (JArray)data[GameKeys.INFO];
                 MainGame game = (MainGame)clt.scrManager.GetScreensByState(States.ScreenState.GS_MAIN_GAME);
-                game.room.CreateParticipant(idJoin);
+                int idCreateRoom = 0;
+                if (game.room == null)
+                {
+                    foreach (JObject item in arr)
+                    {
+                        if ((int)item[GameKeys.POSITION] == 1)
+                        {
+                            idCreateRoom = (int)item[GameKeys.ID];
+                            break;
+                        }
+                        
+                    }
+                    game.room = new Room(game.game, this.clt);
+                    game.room.CreateParticipant(idCreateRoom);
+                    game.room.CreateParticipant(idJoin);
+                    game.setMainCamera();
+
+                }
+               
                 clt.scrManager.PlayScreen(States.ScreenState.GS_MAIN_GAME);
             }
             

@@ -57,6 +57,9 @@ namespace GameProject
             {
                 //2
                 //turret.Update();
+                camera.Update(gameTime);
+                //1
+                turret.Update(camera.upDownRotation, camera.leftRightRotation, gameTime);
             }
         }
 

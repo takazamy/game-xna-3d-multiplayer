@@ -50,8 +50,8 @@ namespace GameProject.GameLogic
         {
             Participant p = new Participant(clientId, this.game);            
             p.isMe = client.parentParticipant.ClientId == clientId? true:false;           
-            p.CreateCamera(totalPlayer == 0? 1:2, this.game);         
-            this.clientList.Add(p.ClientId,p);
+            p.CreateCamera(totalPlayer == 0? 1:2, this.game);
+            this.Add(p);
         }
     }
 }
