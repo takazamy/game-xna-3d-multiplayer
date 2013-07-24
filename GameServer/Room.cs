@@ -32,5 +32,13 @@ namespace GameServer
             totalPlayer++;
             clt.refRoom = this;
         }
+
+        public void SendAllInRoom(String mesg)
+        {
+            foreach (var item in clientList)
+            {
+                item.Value.send(mesg);
+            }
+        }
     }
 }

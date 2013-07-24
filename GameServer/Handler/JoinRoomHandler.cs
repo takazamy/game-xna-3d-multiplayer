@@ -29,6 +29,7 @@ namespace GameServer.Handler
             else
             {
                 room.Add(client);
+                client.refRoom = room;
                 GameRequest.sendJoinRoom(this.client, true);
                 
             }
