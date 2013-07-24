@@ -57,29 +57,29 @@ namespace GameProject
             {
                 //2
                 //turret.Update();
-                camera.Update(gameTime);
+                //camera.Update(gameTime);
                 //1
-                turret.Update(camera.upDownRotation, camera.leftRightRotation, gameTime);
+                //turret.Update(camera.upDownRotation, camera.leftRightRotation, gameTime);
             }
         }
 
         public void Draw(GameTime gameTime)
         {
             turret.DrawModel("Lighting", 0.1f, camera);
+            Console.WriteLine("ClientId:" + this.ClientId + "turret:" + turret.position);
         }
 
         internal void CreateCamera(int position, Game game)
         {
+            camera = new CameraComponent(game, gunPosition + new Vector3(0, 0.8f, 0), gunPosition + new Vector3(0, 0.8f, 10), new Vector3(0, 1, 0));
             try
             {
                 switch (position)
                 {
-                    case 1:
-                        camera = new CameraComponent(game, gunPosition + new Vector3(0,0.8f,0),gunPosition + new Vector3(0, 0.8f, 10), new Vector3(0, 1, 0));
+                    case 1:                        
                         turret = new Turret("Model/gun2", modelEffect, gunPosition, camera, game);
                         break;
-                    case 2:
-                        camera = new CameraComponent(game, gunPosition2 + new Vector3(0, 0.8f, 0), gunPosition2 + new Vector3(0, 0.8f, 10), new Vector3(0, 1, 0));
+                    case 2:                        
                         turret = new Turret("Model/gun2", modelEffect, gunPosition2, camera, game);
                         break;
                     default:
