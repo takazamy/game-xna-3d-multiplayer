@@ -16,7 +16,7 @@ namespace XnaGameCore
         short[] indices;
 
         int numBillboards;
-        Vector2 billboardSize;
+        public Vector2 billboardSize;
         Texture2D texture;
 
         GraphicsDevice graphicDevice;
