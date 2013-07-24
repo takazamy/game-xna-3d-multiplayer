@@ -15,6 +15,7 @@ namespace GameServer
         public const string ROOM_LIST = "roomlist";
         public const string SUCCESS = "success";
         public const string POSITION = "pos";
+        public const string INFO = "info";
 
     }
 }
