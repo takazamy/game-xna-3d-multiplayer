@@ -73,17 +73,22 @@ namespace GameProject
         {
             this.xRotation += xRotate;
             this.yRotation += yRotate;
+            int moveLR = 0;
+            int moveUD = 0;
             if (xRotate > 0)
             {
                 stateLR = GameKeys.TURRET_STATE_LR.LEFT;
+                moveLR = 1;
             }
             else if (xRotate < 0)
             {
                 stateLR = GameKeys.TURRET_STATE_LR.RIGHT;
+                moveLR = -1;
             }
             else
             {
                 stateLR = GameKeys.TURRET_STATE_LR.STAYLR;
+                moveLR = 0;
             }
             if (yRotate > 0)
             {
@@ -102,7 +107,7 @@ namespace GameProject
 	        {
 		        if (this.participant.isMe)
 	            {
-                    RequestHandler.SendPlayerMove(participant.room.client, stateLR, stateUD);
+                    RequestHandler.SendPlayerMove(participant.room.client, moveLR, 0);
 	            }
                 lastStateUD = stateUD;
                 lastStateLR = stateLR;
