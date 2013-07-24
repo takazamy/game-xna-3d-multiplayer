@@ -16,6 +16,8 @@ namespace GameServer
         public const string SUCCESS = "success";
         public const string POSITION = "pos";
         public const string INFO = "info";
+        public const string LEFTRIGHTMOVE = "lrm";
+        public const string UPDOWNMOVE = "udm";
 
     }
 }
