@@ -20,7 +20,10 @@ namespace GameProject
         public bool isMe;
         public int position;
         Game game;
+        private Vector3 rotationAngle;
+        private Vector3 phapTuyen;
         Vector3 gunPosition, gunPosition2;
+
         #endregion
 
         public Participant(int id, Game game)
@@ -28,7 +31,8 @@ namespace GameProject
             hp = 100;
             this.ClientId = id;
             this.game = game;
-                 
+            rotationAngle = new Vector3();
+            phapTuyen = new Vector3();
             Init();
         }
 
