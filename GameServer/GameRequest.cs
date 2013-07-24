@@ -41,8 +41,8 @@ namespace GameServer
                     info[GameKeys.POSITION] = cl.parentParticipant.position;
                     arr.Add(info);
 	            }
-                             
-             
+                mesg[GameKeys.INFO] = arr;
+                mesg[GameKeys.ID] = clt.parentParticipant.ClientId;
             }
             clt.send(mesg.ToString());
         }
