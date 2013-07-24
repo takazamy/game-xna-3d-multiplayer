@@ -49,6 +49,7 @@ namespace GameProject
             this.xRotation += xRotate;
             this.yRotation += yRotate;
 
+          
             eslapedTime += gameTime.ElapsedGameTime.Milliseconds;
             MouseState mouse = Mouse.GetState();
             if (mouse.LeftButton == ButtonState.Pressed)
@@ -109,8 +110,6 @@ namespace GameProject
                 Matrix worldMatrix;
                     worldMatrix = modelBone[mesh.ParentBone.Index] * modelWorld;
                 
-
-
                 foreach (Effect currentEffect in mesh.Effects)
                 {
                     currentEffect.CurrentTechnique = currentEffect.Techniques[technique];
@@ -129,6 +128,8 @@ namespace GameProject
         }
         private void Fire(Vector3 direction)
         {
+            Console.WriteLine(xRotation);
+            Console.WriteLine(yRotation);
 
             Vector3 firePosition = camera.cameraPosition + camera.cameraDirection * 9;
 

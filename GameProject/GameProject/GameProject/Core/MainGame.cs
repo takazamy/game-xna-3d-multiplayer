@@ -83,7 +83,7 @@ namespace GameProject.Core
 
             if (enable)
             {
-                camera.Update(gameTime);
+               // camera.Update(gameTime);
 
            //     turret.Update(camera.upDownRotation, camera.leftRightRotation,gameTime);
 
