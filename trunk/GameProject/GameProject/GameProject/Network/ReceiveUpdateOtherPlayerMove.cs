@@ -23,8 +23,35 @@ namespace GameProject.Network
 	        {
                 if (!item.Value.isMe)
                 {
-                    GameKeys.TURRET_STATE_LR stateLR = (GameKeys.TURRET_STATE_LR)(int)data[GameKeys.LEFTRIGHTMOVE];
-                    GameKeys.TURRET_STATE_UD stateUD = (GameKeys.TURRET_STATE_UD)(int)data[GameKeys.UPDOWNMOVE];
+                    GameKeys.TURRET_STATE_LR stateLR = GameKeys.TURRET_STATE_LR.STAYLR;
+                    switch ((int)data[GameKeys.LEFTRIGHTMOVE])
+                    {
+                        case 1:
+                            stateLR = GameKeys.TURRET_STATE_LR.LEFT;
+                            break;
+                        case 0:
+                            stateLR = GameKeys.TURRET_STATE_LR.STAYLR;
+                            break;
+                        case -1:
+                            stateLR = GameKeys.TURRET_STATE_LR.RIGHT;
+                            break;
+                        
+                    }
+                    GameKeys.TURRET_STATE_UD stateUD = GameKeys.TURRET_STATE_UD.STAYUD;
+                    switch ((int)data[GameKeys.LEFTRIGHTMOVE])
+                    {
+                        case 1:
+                            stateUD = GameKeys.TURRET_STATE_UD.UP;
+                            break;
+                        case 0:
+                            stateUD = GameKeys.TURRET_STATE_UD.STAYUD;
+                            break;
+                        case -1:
+                            stateUD = GameKeys.TURRET_STATE_UD.DOWN;
+                            break;
+                        
+                    }                    
+                   
                     item.Value.UpdateTurretMove(stateLR, stateUD);
                 }
 	        } 

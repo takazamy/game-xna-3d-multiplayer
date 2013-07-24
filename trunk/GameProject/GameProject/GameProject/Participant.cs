@@ -63,9 +63,10 @@ namespace GameProject
         }
         public void Update(GameTime gameTime)
         {
-            target.Update(gameTime);
+            
             if (isMe)
             {
+                target.Update(gameTime);
                 //Camera
          //       camera.Update(gameTime);
                 //1 
